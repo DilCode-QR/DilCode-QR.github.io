@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dilcode — Feelings Coded with Love</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+[data-theme="light"]{
+  --bg:#fff;--bg2:#f9fafb;--bg3:#f3f4f6;--border:#e5e7eb;--border2:#d1d5db;
+  --text:#111827;--text2:#6b7280;--text3:#9ca3af;--card:#fff;--card2:#f9fafb;
+  --nav-bg:rgba(255,255,255,.95);--sh:0 1px 3px rgba(0,0,0,.08);
+  --sh2:0 4px 16px rgba(0,0,0,.10);--sh3:0 12px 40px rgba(0,0,0,.12);
+}
+[data-theme="dark"]{
+  --bg:#0a0a0f;--bg2:#111118;--bg3:#1a1a24;--border:#2a2a3a;--border2:#3a3a4a;
+  --text:#f0f0f8;--text2:#8888a8;--text3:#55556a;--card:#141420;--card2:#1a1a28;
+  --nav-bg:rgba(10,10,15,.95);--sh:0 1px 3px rgba(0,0,0,.3);
+  --sh2:0 4px 16px rgba(0,0,0,.4);--sh3:0 12px 40px rgba(0,0,0,.5);
+}
+:root{
+  --rose:#e11d48;--rose-d:#9f1239;--rd:rgba(225,29,72,.12);--rd2:rgba(225,29,72,.2);
+  --purple:#7c3aed;--pd:rgba(124,58,237,.1);
+  --fd:"Fraunces",serif;--fb:"Plus Jakarta Sans",sans-serif;
+  --nh:64px;--tr:all .2s ease;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;line-height:1.6;transition:background .3s,color .3s}
+button,input,textarea,select{font-family:inherit}
+a{text-decoration:none;color:inherit}
+
+#nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:var(--tr)}
+.ni{max-width:1180px;margin:0 auto;padding:0 20px;height:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-family:var(--fd);font-size:1.4rem;font-style:italic;font-weight:600;cursor:pointer;color:var(--text)}
+.logo span{color:var(--rose)}
+.nlinks{display:flex;align-items:center;gap:4px}
+.nl{padding:7px 14px;border-radius:8px;font-size:.84rem;font-weight:500;color:var(--text2);transition:var(--tr);cursor:pointer;border:none;background:transparent}
+.nl:hover,.nl.active{color:var(--rose);background:var(--rd)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.tbtn{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:var(--bg2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:var(--tr)}
+.tbtn:hover{border-color:var(--rose)}
+.ncta{padding:8px 20px;background:var(--rose);color:#fff;border-radius:100px;font-size:.84rem;font-weight:600;border:none;cursor:pointer;transition:var(--tr)}
+.ncta:hover{background:var(--rose-d);transform:translateY(-1px)}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:transparent}
+.hbg span{display:block;width:20px;height:2px;background:var(--text2);border-radius:2px}
+.mmenu{display:none;position:fixed;top:var(--nh);left:0;right:0;bottom:0;background:var(--bg);z-index:850;padding:16px;flex-direction:column;gap:4px;overflow-y:auto}
+.mmenu.open{display:flex}
+.mmenu .nl{font-size:.95rem;padding:12px 16px;border-radius:10px;text-align:left;width:100%}
+.mmenu .ncta{width:100%;text-align:center;padding:12px;border-radius:10px;margin-top:8px}
+
+.view{display:none;padding-top:var(--nh)}
+.view.active{display:block}
+.con{max-width:1180px;margin:0 auto;padding:0 20px}
+.con-sm{max-width:720px;margin:0 auto;padding:0 20px}
+.sec{padding:80px 0}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 24px;border-radius:100px;font-size:.875rem;font-weight:600;transition:var(--tr);cursor:pointer;border:none;white-space:nowrap}
+.btn-dark{background:var(--text);color:var(--bg)}.btn-dark:hover{background:var(--rose);transform:translateY(-2px)}
+.btn-rose{background:var(--rose);color:#fff}.btn-rose:hover{background:var(--rose-d);transform:translateY(-2px)}
+.btn-out{background:transparent;color:var(--text2);border:1.5px solid var(--border)}.btn-out:hover{border-color:var(--rose);color:var(--rose)}
+.btn-ghost{background:var(--bg3);color:var(--text2)}.btn-ghost:hover{color:var(--text)}
+.btn-sm{padding:7px 14px;font-size:.76rem}.btn-lg{padding:13px 32px;font-size:.95rem}.btn-w{width:100%;justify-content:center}
+
+.hero{min-height:calc(100vh - var(--nh));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 20px 80px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(225,29,72,.07),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.htag{display:inline-block;background:var(--rd);color:var(--rose);padding:5px 14px;border-radius:100px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;border:1px solid var(--rd2)}
+.hero h1{font-family:var(--fd);font-size:clamp(2.8rem,8vw,5.5rem);line-height:1.05;letter-spacing:-.02em;font-weight:600;margin-bottom:16px}
+.hero h1 em{font-style:italic;color:var(--rose)}
+.hero-sub{font-size:1rem;color:var(--text2);max-width:440px;line-height:1.75;margin:0 auto 36px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.hstats{display:flex;gap:32px;justify-content:center;margin-top:56px;flex-wrap:wrap}
+.hstat{text-align:center}
+.hstat-n{font-family:var(--fd);font-size:2rem;font-style:italic;color:var(--rose);font-weight:600;display:block;line-height:1}
+.hstat-l{font-size:.68rem;color:var(--text3);font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+
+.sec-lbl{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);display:block;margin-bottom:10px}
+.sec-title{font-family:var(--fd);font-size:clamp(1.8rem,4vw,3rem);font-weight:600;line-height:1.15;color:var(--text)}
+.sec-title span{color:var(--rose)}
+.sec-sub{color:var(--text2);font-size:.9rem;margin-top:10px;line-height:1.7}
+
+.occ-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.occ-card{background:var(--card);border-radius:18px;overflow:hidden;border:1px solid var(--border);transition:var(--tr);cursor:pointer}
+.occ-card:hover{transform:translateY(-5px);box-shadow:var(--sh3);border-color:var(--rose)}
+.occ-thumb{height:150px;display:flex;align-items:center;justify-content:center;position:relative}
+.occ-lbl{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.45);color:#fff;font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:100px;backdrop-filter:blur(8px)}
+.occ-txt{font-family:var(--fd);font-size:2rem;font-style:italic;color:rgba(255,255,255,.9);font-weight:300;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.occ-body{padding:14px 16px 16px}
+.occ-body h3{font-family:var(--fd);font-size:1rem;font-style:italic;margin-bottom:3px;color:var(--text)}
+.occ-body p{font-size:.76rem;color:var(--text2);line-height:1.5;margin-bottom:10px}
+.occ-foot{display:flex;align-items:center;justify-content:space-between}
+.occ-price{font-size:.7rem;color:var(--text3);font-weight:500}
+.occ-arr{width:26px;height:26px;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:var(--tr);color:var(--text2)}
+.occ-card:hover .occ-arr{background:var(--rose);color:#fff;transform:rotate(45deg)}
+
+.bg-rose{background:linear-gradient(135deg,#1a0510,#7f1d3f,#be185d)}
+.bg-blue{background:linear-gradient(135deg,#0c1445,#1e3a8a,#1d4ed8)}
+.bg-purple{background:linear-gradient(135deg,#2e1065,#5b21b6,#7c3aed)}
+.bg-green{background:linear-gradient(135deg,#052e16,#14532d,#15803d)}
+.bg-amber{background:linear-gradient(135deg,#2d1500,#78350f,#b45309)}
+.bg-teal{background:linear-gradient(135deg,#042f2e,#0f766e,#0d9488)}
+.bg-brown{background:linear-gradient(135deg,#1c0a00,#431407,#7c2d12)}
+.bg-navy{background:linear-gradient(135deg,#0a0f1e,#1e1b4b,#312e81)}
+
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border-radius:18px;overflow:hidden;margin-top:44px}
+.how-step{background:var(--card);padding:28px 20px;position:relative;transition:background .2s}
+.how-step:hover{background:var(--bg2)}
+.how-n{font-family:var(--fd);font-size:2.8rem;color:var(--border2);font-style:italic;font-weight:600;position:absolute;top:12px;right:14px;line-height:1}
+.how-ico{width:38px;height:38px;background:var(--bg3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:1.1rem}
+.how-step h4{font-family:var(--fd);font-size:.88rem;font-style:italic;margin-bottom:5px;color:var(--text)}
+.how-step p{font-size:.74rem;color:var(--text2);line-height:1.6}
+
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:18px;padding:22px 18px;transition:var(--tr);position:relative}
+.pc:hover{border-color:var(--rose);transform:translateY(-3px);box-shadow:var(--sh3)}
+.pc.feat{border-color:var(--rose);background:linear-gradient(135deg,var(--rd),var(--card))}
+.pc-badge{position:absolute;top:10px;right:10px;background:var(--rose);color:#fff;font-size:.58rem;font-weight:700;padding:2px 8px;border-radius:100px;text-transform:uppercase}
+.pc-lbl{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--rose);margin-bottom:8px;display:block}
+.pc-amt{font-family:var(--fd);font-size:1.8rem;font-style:italic;font-weight:600;display:block;margin:6px 0 3px;color:var(--text)}
+.pc-div{height:1px;background:var(--border);margin:10px 0}
+.pc-desc{font-size:.74rem;color:var(--text2);line-height:1.55}
+
+.tmpl-hdr{padding:36px 0 28px;border-bottom:1px solid var(--border)}
+.bc{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--text3);margin-bottom:12px}
+.bc span{cursor:pointer;transition:color .2s}.bc span:hover{color:var(--rose)}.bc .sep{color:var(--border2)}
+.tmpl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;padding:36px 0}
+.tc{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;transition:var(--tr)}
+.tc:hover{box-shadow:var(--sh3);transform:translateY(-3px)}
+.tc-thumb{height:170px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.tc-name{font-family:var(--fd);font-size:1.5rem;font-style:italic;color:rgba(255,255,255,.85);text-shadow:0 2px 12px rgba(0,0,0,.3);font-weight:300}
+.tc-stag{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.4);color:#fff;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:100px;backdrop-filter:blur(8px)}
+.tc-body{padding:14px 16px 16px}
+.tc-body h4{font-family:var(--fd);font-size:.95rem;font-style:italic;margin-bottom:3px;color:var(--text)}
+.tc-body p{font-size:.74rem;color:var(--text2);line-height:1.5;margin-bottom:10px}
+.tc-price-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.tc-price{font-family:var(--fd);font-size:1.1rem;font-style:italic;font-weight:600;color:var(--text)}
+.tc-acts{display:flex;gap:6px;flex-wrap:wrap}
+.tc-acts .btn{flex:1;min-width:0;font-size:.74rem;padding:8px 8px}
+
+.order-card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;margin-bottom:12px;transition:var(--tr)}
+.order-card:hover{box-shadow:var(--sh2)}
+.order-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:12px}
+.order-occ{font-family:var(--fd);font-size:1rem;font-style:italic;font-weight:600;color:var(--text)}
+.order-num{font-size:.7rem;color:var(--text3);margin-top:2px}
+.ostatus{display:inline-block;padding:3px 10px;border-radius:100px;font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.os-waiting{background:rgba(217,119,6,.12);color:#d97706}
+.os-accepted{background:rgba(29,78,216,.12);color:#1d4ed8}
+.os-working{background:rgba(124,58,237,.12);color:#7c3aed}
+.os-complete{background:rgba(22,163,74,.12);color:#16a34a}
+.os-cancelled{background:rgba(220,38,38,.12);color:#dc2626}
+.order-msg{border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:.8rem;color:var(--text2);line-height:1.6}
+.order-details{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.od-label{font-size:.64rem;color:var(--text3);display:block;margin-bottom:2px;text-transform:uppercase;letter-spacing:.06em}
+.od-value{font-size:.8rem;color:var(--text);font-weight:500}
+.order-actions{display:flex;gap:8px;flex-wrap:wrap}
+.no-orders{text-align:center;padding:48px 20px;color:var(--text3)}
+
+.mbk{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:990;backdrop-filter:blur(6px);align-items:flex-end;justify-content:center}
+.mbk.open{display:flex}
+@media(min-width:600px){.mbk{align-items:center}}
+.mbox{background:var(--bg2);border-radius:20px 20px 0 0;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;animation:sUp .3s ease;border:1px solid var(--border);border-bottom:none}
+@media(min-width:600px){.mbox{border-radius:20px;animation:pIn .3s ease;border:1px solid var(--border)}}
+@keyframes sUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes pIn{from{opacity:0;transform:scale(.95) translateY(12px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.mhdr{padding:20px 20px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.mhdr h3{font-family:var(--fd);font-size:1.2rem;font-style:italic;color:var(--text)}
+.mcls{width:28px;height:28px;border-radius:50%;background:var(--bg3);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--text2);transition:var(--tr);flex-shrink:0}
+.mcls:hover{background:var(--border)}
+.mbdy{padding:16px 20px 24px}
+.fg{margin-bottom:12px}
+.fl{display:block;font-size:.74rem;font-weight:600;color:var(--text2);margin-bottom:5px}
+.fi{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:.86rem;color:var(--text);outline:none;transition:border-color .2s;resize:none}
+.fi:focus{border-color:var(--rose)}.fi::placeholder{color:var(--text3)}.fi option{background:var(--bg2)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fcks{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.fck{display:flex;align-items:center;gap:7px;padding:8px 10px;border:1.5px solid var(--border);border-radius:9px;cursor:pointer;transition:border-color .2s}
+.fck:hover{border-color:var(--rose)}
+.fck input{accent-color:var(--rose);width:13px;height:13px;cursor:pointer;flex-shrink:0}
+.fck label{font-size:.78rem;font-weight:500;cursor:pointer;color:var(--text)}
+.fpr{display:flex;align-items:center;justify-content:space-between;background:var(--rd);border:1px solid var(--rd2);border-radius:10px;padding:11px 14px;margin-bottom:12px}
+.fpr-l{font-size:.78rem;color:var(--text2)}
+.fpr-v{font-family:var(--fd);font-size:1.2rem;font-style:italic;font-weight:600;color:var(--rose)}
+.cnote{font-size:.68rem;color:var(--text3);margin-top:4px;line-height:1.5}
+.succ-wrap{text-align:center;padding:8px 0 14px}
+.succ-ico{width:48px;height:48px;background:rgba(22,163,74,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:1.4rem}
+.succ-wrap h3{font-family:var(--fd);font-size:1.3rem;font-style:italic;margin-bottom:8px;color:var(--text)}
+.succ-box{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px;font-size:.8rem;color:var(--text2);line-height:1.65;text-align:left}
+.soc-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:10px;font-size:.86rem;font-weight:600;text-decoration:none;transition:var(--tr);border:none;cursor:pointer;color:#fff}
+.s-ig{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}.s-ig:hover{opacity:.9;transform:translateY(-1px)}
+
+.cust-hero{padding:64px 0;text-align:center;background:var(--bg2);border-bottom:1px solid var(--border)}
+.cust-hero h2{font-family:var(--fd);font-style:italic;font-size:clamp(1.8rem,4vw,3rem);margin-bottom:10px;color:var(--text)}
+.cust-hero p{color:var(--text2);max-width:420px;margin:0 auto 28px;font-size:.9rem}
+.sc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:32px}
+.sc-card{background:var(--card);border-radius:16px;overflow:hidden;border:1px solid var(--border);transition:var(--tr)}
+.sc-card:hover{box-shadow:var(--sh3);transform:translateY(-3px)}
+.sc-thumb{height:160px;display:flex;align-items:center;justify-content:center}
+.sc-txt{font-family:var(--fd);font-size:1.6rem;font-style:italic;color:rgba(255,255,255,.8);font-weight:300}
+.sc-info{padding:12px 14px 14px}
+.sc-occ-lbl{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);margin-bottom:3px}
+.sc-acts{display:flex;gap:5px;margin-top:9px;flex-wrap:wrap}
+
+.ab-logo{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.ab-mark{width:46px;height:46px;background:linear-gradient(135deg,var(--rose),var(--purple));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.ab-nm{font-family:var(--fd);font-size:1.4rem;font-style:italic;font-weight:600;color:var(--text)}
+.ab-tag{font-size:.7rem;color:var(--text3)}
+.ab-desc{font-size:.95rem;color:var(--text2);line-height:1.8;max-width:520px;margin-bottom:32px}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:38px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:52px}
+.ab-dc{padding:18px;background:var(--bg2);border-radius:12px;border:1px solid var(--border)}
+.ab-dc h4{font-family:var(--fd);font-size:.92rem;font-style:italic;margin-bottom:5px;color:var(--text)}
+.ab-dc p{font-size:.78rem;color:var(--text2);line-height:1.65}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:32px}
+.rv{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;transition:var(--tr)}
+.rv:hover{box-shadow:var(--sh2)}
+.rv-hdr{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.rv-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--rd),var(--pd));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:.88rem;font-style:italic;color:var(--rose);font-weight:600;flex-shrink:0}
+.rv-n{font-size:.84rem;font-weight:700;color:var(--text)}.rv-d{font-size:.68rem;color:var(--text3);margin-top:1px}
+.rv-stars{display:flex;gap:2px;margin-bottom:7px;font-size:.72rem;color:#f59e0b}
+.rv-txt{font-size:.78rem;color:var(--text2);line-height:1.65}
+
+.adm-login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);padding:24px}
+.adm-lb{background:var(--card);border-radius:20px;padding:38px 30px;max-width:360px;width:100%;text-align:center;box-shadow:var(--sh3);border:1px solid var(--border)}
+.adm-lb h2{font-family:var(--fd);font-size:1.4rem;font-style:italic;margin-bottom:4px;color:var(--text)}
+.adm-lb p{font-size:.8rem;color:var(--text3);margin-bottom:20px}
+.adm-err{font-size:.74rem;color:var(--rose);margin-top:6px;min-height:16px}
+.adm-wrap{display:none;min-height:100vh;background:var(--bg2)}
+.adm-wrap.show{display:block}
+.adm-nav{background:var(--nav-bg);border-bottom:1px solid var(--border);padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(20px)}
+.adm-logo{font-family:var(--fd);font-size:1rem;font-style:italic;font-weight:600;color:var(--text);display:flex;align-items:center;gap:6px}
+.adm-logo span{font-size:.6rem;background:var(--rd);color:var(--rose);padding:2px 6px;border-radius:100px;font-family:var(--fb);font-weight:600;font-style:normal}
+.adm-body{max-width:1200px;margin:0 auto;padding:22px 20px}
+.adm-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:18px}
+.ast{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.ast-l{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:4px;display:block}
+.ast-v{font-family:var(--fd);font-size:1.5rem;font-style:italic;font-weight:600;display:block;color:var(--text)}
+.adm-tabs{display:flex;gap:3px;background:var(--bg3);border-radius:10px;padding:3px;margin-bottom:16px;max-width:440px}
+.adm-tab{flex:1;padding:8px 10px;border-radius:8px;border:none;background:transparent;font-family:inherit;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--text2);transition:var(--tr)}
+.adm-tab.active{background:var(--card);color:var(--text);box-shadow:var(--sh)}
+.adm-card{background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:14px;overflow:hidden}
+.adm-ch{padding:13px 17px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.adm-ch h3{font-size:.84rem;font-weight:700;color:var(--text)}
+.adm-cb{padding:15px 17px}
+.adm-tbl{width:100%;border-collapse:collapse;font-size:.76rem}
+.adm-tbl th{text-align:left;padding:7px 9px;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);background:var(--bg2);border-bottom:1px solid var(--border)}
+.adm-tbl td{padding:9px 9px;border-bottom:1px solid var(--bg3);color:var(--text2);vertical-align:middle}
+.adm-tbl tr:last-child td{border-bottom:none}
+.adm-tbl tr:hover td{background:var(--bg2)}
+.spl{display:inline-block;padding:2px 8px;border-radius:100px;font-size:.6rem;font-weight:600}
+.spl.waiting{background:rgba(217,119,6,.12);color:#d97706}
+.spl.accepted{background:rgba(29,78,216,.12);color:#1d4ed8}
+.spl.working{background:rgba(124,58,237,.12);color:#7c3aed}
+.spl.complete{background:rgba(22,163,74,.12);color:#16a34a}
+.spl.cancelled{background:rgba(220,38,38,.12);color:#dc2626}
+.abs{padding:3px 8px;border-radius:100px;font-size:.64rem;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:var(--tr)}
+.a-acc{background:rgba(29,78,216,.1);color:#1d4ed8}.a-acc:hover{background:#1d4ed8;color:#fff}
+.a-work{background:rgba(124,58,237,.1);color:#7c3aed}.a-work:hover{background:#7c3aed;color:#fff}
+.a-done{background:rgba(22,163,74,.1);color:#16a34a}.a-done:hover{background:#16a34a;color:#fff}
+.a-can{background:rgba(220,38,38,.08);color:#dc2626}.a-can:hover{background:#dc2626;color:#fff}
+.a-del{background:rgba(220,38,38,.06);color:#dc2626}.a-del:hover{background:#dc2626;color:#fff}
+.a-edit{background:var(--bg3);color:var(--text2)}.a-edit:hover{background:var(--border)}
+.a-ig{background:rgba(131,58,180,.08);color:#833ab4}.a-ig:hover{background:#833ab4;color:#fff}
+.fp{display:flex;gap:5px;flex-wrap:wrap}
+.fpill{padding:5px 12px;border-radius:100px;font-size:.7rem;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:transparent;color:var(--text2);transition:var(--tr);font-family:inherit}
+.fpill.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+.fpill.fp-w.active{background:#d97706;border-color:#d97706;color:#fff}
+.fpill.fp-c.active{background:#16a34a;border-color:#16a34a;color:#fff}
+.fpill.fp-x.active{background:#dc2626;border-color:#dc2626;color:#fff}
+.asrch input{padding:6px 12px;border:1.5px solid var(--border);border-radius:100px;font-size:.74rem;outline:none;font-family:inherit;width:170px;transition:border-color .2s;background:var(--bg);color:var(--text)}
+.asrch input:focus{border-color:var(--rose)}
+.adm-ff{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px;margin-bottom:12px}
+.etbl{text-align:center;padding:34px;color:var(--text3);font-size:.78rem}
+.cat-block{background:var(--card);border:1.5px solid var(--border);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.cat-hdr{padding:12px 16px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.cat-title{font-size:.84rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:7px}
+.cat-cnt{font-size:.58rem;font-weight:700;background:var(--rd);color:var(--rose);padding:2px 6px;border-radius:100px}
+.cat-acts{display:flex;gap:4px}
+.tr-hdr{display:grid;grid-template-columns:2fr 0.7fr 70px 1.1fr 110px;gap:6px;padding:7px 16px;background:var(--bg2);border-bottom:1px solid var(--border);font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3)}
+.tr-item{display:grid;grid-template-columns:2fr 0.7fr 70px 1.1fr 110px;gap:6px;padding:9px 16px;border-bottom:1px solid var(--bg3);align-items:center;transition:background .15s}
+.tr-item:last-child{border-bottom:none}
+.tr-item:hover{background:var(--bg2)}
+.ti-n{font-size:.8rem;font-weight:600;color:var(--text)}
+.ti-s{font-size:.7rem;color:var(--text3)}
+.ti-p{font-size:.8rem;font-weight:600;color:var(--text2)}
+.ti-f{font-size:.68rem;color:var(--purple);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ti-acts{display:flex;gap:4px}
+.add-tf{padding:12px 16px;background:var(--bg2);border-top:2px dashed var(--border)}
+.atf-grid{display:grid;grid-template-columns:1.5fr 0.7fr 70px 1fr 1fr auto;gap:7px;align-items:end}
+.atf-grid .fi{padding:7px 9px;font-size:.74rem}
+.acf-grid{display:grid;grid-template-columns:1.2fr 1.5fr 1fr auto;gap:8px;align-items:end;padding:16px}
+.sc-adm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px}
+.sc-adm-item{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--card)}
+.sc-adm-thumb{height:60px;display:flex;align-items:center;justify-content:center}
+.sc-adm-foot{padding:8px 10px;display:flex;align-items:center;justify-content:space-between}
+
+.footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 0 22px}
+.ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;margin-bottom:32px}
+.ft-brand h3{font-family:var(--fd);font-size:1.1rem;font-style:italic;margin-bottom:6px;color:var(--text)}
+.ft-brand p{font-size:.76rem;color:var(--text3);line-height:1.6}
+.ft-col h4{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:9px}
+.ft-links{display:flex;flex-direction:column;gap:6px}
+.ft-links a{font-size:.78rem;color:var(--text2);transition:color .2s;cursor:pointer}
+.ft-links a:hover{color:var(--rose)}
+.ft-bot{border-top:1px solid var(--border);padding-top:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ft-bot p{font-size:.7rem;color:var(--text3)}
+
+.loading{display:flex;align-items:center;justify-content:center;padding:36px;color:var(--text3);font-size:.82rem;gap:8px}
+.spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--rose);border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--text);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:.78rem;font-weight:500;z-index:9999;transform:translateY(60px);opacity:0;transition:var(--tr);pointer-events:none;box-shadow:var(--sh3);max-width:280px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{background:#15803d;color:#fff}
+.toast.error{background:var(--rose);color:#fff}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){.how-grid{grid-template-columns:1fr 1fr}.price-grid{grid-template-columns:1fr 1fr}.ft-top{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){
+  .sec{padding:56px 0}.nlinks,.ncta{display:none}.hbg{display:flex}
+  .how-grid,.price-grid,.ab-grid{grid-template-columns:1fr}.ft-top{grid-template-columns:1fr}
+  .adm-ff{grid-template-columns:1fr 1fr}.frow,.fcks{grid-template-columns:1fr}
+  .tr-hdr,.tr-item{grid-template-columns:1fr auto}
+  .tr-hdr>*:not(:first-child):not(:last-child){display:none}
+  .tr-item>*:not(:first-child):not(:last-child){display:none}
+  .atf-grid{grid-template-columns:1fr auto}
+  .atf-grid>*:nth-child(n+2):not(:last-child){display:none}
+  .acf-grid{grid-template-columns:1fr auto}
+  .acf-grid>*:nth-child(n+2):not(:last-child){display:none}
+  .order-details{grid-template-columns:1fr}
+  .tc-acts{flex-direction:column}
+}
+@media(max-width:480px){.con,.con-sm{padding:0 14px}.hero h1{font-size:2.4rem}.adm-lb{padding:26px 14px}.adm-ff{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="ni">
+    <div class="logo" onclick="goTo('home')">Dil<span>code</span></div>
+    <div class="nlinks">
+      <button class="nl active" id="nl-home" onclick="goTo('home')">Home</button>
+      <button class="nl" id="nl-customization" onclick="goTo('customization')">Customization</button>
+      <button class="nl" id="nl-about" onclick="goTo('about')">About</button>
+      <button class="nl" id="nl-myorders" onclick="goTo('myorders')">My Orders</button>
+    </div>
+    <div class="nav-right">
+      <button class="tbtn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">☀️</button>
+      <button class="ncta" onclick="goTo('myorders')">My Orders</button>
+      <div class="hbg" onclick="toggleMM()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+<div class="mmenu" id="mmenu">
+  <button class="nl" onclick="goTo('home');closeMM()">Home</button>
+  <button class="nl" onclick="goTo('customization');closeMM()">Customization</button>
+  <button class="nl" onclick="goTo('about');closeMM()">About</button>
+  <button class="nl" onclick="goTo('myorders');closeMM()">My Orders</button>
+  <button class="ncta" onclick="goTo('myorders');closeMM()">My Orders</button>
+</div>
+
+<!-- HOME -->
+<div class="view active" id="view-home">
+  <div class="con">
+    <div class="hero">
+      <div class="hero-glow"></div>
+      <span class="htag">Personalized digital gifts</span>
+      <h1>When words <em>alone</em><br>aren't enough</h1>
+      <p class="hero-sub">Beautiful custom pages for every emotion — Rose Day, Sorry, Propose, Birthday and more. Delivered in 2-3 days.</p>
+      <div class="hero-btns">
+        <button class="btn btn-dark btn-lg" onclick="scrollToOcc()">Explore Templates</button>
+        <button class="btn btn-out btn-lg" onclick="goTo('customization')">Custom Order</button>
+      </div>
+      <div class="hstats">
+        <div class="hstat"><span class="hstat-n">8+</span><span class="hstat-l">Occasions</span></div>
+        <div class="hstat"><span class="hstat-n">32+</span><span class="hstat-l">Templates</span></div>
+        <div class="hstat"><span class="hstat-n">2-3</span><span class="hstat-l">Day Delivery</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)" id="occasions">
+    <div class="con sec">
+      <div class="reveal">
+        <span class="sec-lbl">Templates</span>
+        <h2 class="sec-title">Choose your <span>occasion</span></h2>
+        <p class="sec-sub">Click any occasion to see all available templates</p>
+      </div>
+      <div style="height:28px"></div>
+      <div class="occ-grid" id="occGrid"></div>
+    </div>
+  </div>
+  <div class="con sec reveal">
+    <span class="sec-lbl">Process</span>
+    <h2 class="sec-title">How it <span>works</span></h2>
+    <p class="sec-sub" style="max-width:420px">Four simple steps — from choosing to sharing.</p>
+    <div class="how-grid">
+      <div class="how-step"><div class="how-n">01</div><div class="how-ico">🎯</div><h4>Pick occasion</h4><p>Browse all occasions and find what fits your moment.</p></div>
+      <div class="how-step"><div class="how-n">02</div><div class="how-ico">🎨</div><h4>Choose style</h4><p>Animated, Photo, Cinematic, or Minimal — preview first.</p></div>
+      <div class="how-step"><div class="how-n">03</div><div class="how-ico">📝</div><h4>Fill the form</h4><p>Names, message — a quick form tailored to your occasion.</p></div>
+      <div class="how-step"><div class="how-n">04</div><div class="how-ico">📱</div><h4>Get QR code</h4><p>Custom page + QR code via Instagram DM in 2-3 days.</p></div>
+    </div>
+  </div>
+  <div style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="con sec reveal">
+      <span class="sec-lbl">Pricing</span>
+      <h2 class="sec-title">Simple, <span>honest pricing</span></h2>
+      <p class="sec-sub">Every page includes a QR code. No hidden charges.</p>
+      <div class="price-grid">
+        <div class="pc reveal"><span class="pc-lbl">Minimal</span><span class="pc-amt">Rs. 79</span><div class="pc-div"></div><p class="pc-desc">Clean, elegant page with your custom message.</p></div>
+        <div class="pc reveal"><span class="pc-lbl">Animated</span><span class="pc-amt">Rs. 99</span><div class="pc-div"></div><p class="pc-desc">Smooth animations and your personal message.</p></div>
+        <div class="pc feat reveal"><span class="pc-badge">Popular</span><span class="pc-lbl">Photo</span><span class="pc-amt">Rs. 149</span><div class="pc-div"></div><p class="pc-desc">Your photos in a beautiful slideshow.</p></div>
+        <div class="pc reveal"><span class="pc-lbl">Cinematic</span><span class="pc-amt">Rs. 199+</span><div class="pc-div"></div><p class="pc-desc">Dramatic cinematic reveal — most premium.</p></div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="con">
+      <div class="ft-top">
+        <div class="ft-brand"><h3>Dilcode</h3><p>Feelings, coded with love. Custom digital pages for every emotion, delivered in 2-3 days.</p></div>
+        <div class="ft-col"><h4>Navigate</h4><div class="ft-links"><a onclick="goTo('home')">Home</a><a onclick="goTo('customization')">Customization</a><a onclick="goTo('about')">About</a><a onclick="goTo('myorders')">My Orders</a></div></div>
+        <div class="ft-col"><h4>Contact</h4><div class="ft-links"><a href="https://instagram.com/dilcode_qr" target="_blank">Instagram @dilcode_qr</a></div></div>
+      </div>
+      <div class="ft-bot"><p onclick="secretTap()" style="cursor:default">2025 Dilcode. Made with care.</p><p>dilcode.github.io</p></div>
+    </div>
+  </footer>
+</div>
+
+<!-- TEMPLATES -->
+<div class="view" id="view-templates">
+  <div class="con">
+    <div class="tmpl-hdr">
+      <div class="bc"><span onclick="goTo('home')">Home</span><span class="sep">/</span><span onclick="goTo('home');scrollToOcc()">Templates</span><span class="sep">/</span><span id="tmplBC" style="color:var(--text);font-weight:600">Occasion</span></div>
+      <h2 style="font-family:var(--fd);font-size:clamp(1.4rem,3vw,2rem);font-style:italic;font-weight:600;color:var(--text)" id="tmplTitle">Templates</h2>
+      <p style="color:var(--text2);font-size:.82rem;margin-top:4px">Preview a template, then order or request customization.</p>
+    </div>
+    <div class="tmpl-grid" id="tmplGrid"></div>
+  </div>
+</div>
+
+<!-- MY ORDERS -->
+<div class="view" id="view-myorders">
+  <div class="con sec">
+    <span class="sec-lbl">Your Orders</span>
+    <h2 class="sec-title" style="margin-bottom:8px">My <span>Orders</span></h2>
+    <p class="sec-sub" style="margin-bottom:28px">Track your orders placed from this device.</p>
+    <div id="myOrdersList"><div class="loading"><div class="spinner"></div>Loading...</div></div>
+  </div>
+  <footer class="footer"><div class="con"><div class="ft-bot" style="border-top:none;padding-top:0"><p>2025 Dilcode. Made with care.</p></div></div></footer>
+</div>
+
+<!-- CUSTOMIZATION -->
+<div class="view" id="view-customization">
+  <div class="cust-hero">
+    <div class="con-sm">
+      <span class="sec-lbl">Customization</span>
+      <h2>Want something unique?</h2>
+      <p>Describe your vision — we will build it exactly the way you want.</p>
+      <a href="https://instagram.com/dilcode_qr" target="_blank" class="soc-btn s-ig" style="display:inline-flex;padding:12px 28px;border-radius:100px">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        DM on Instagram @dilcode_qr
+      </a>
+    </div>
+  </div>
+  <div class="con sec">
+    <div class="reveal"><span class="sec-lbl">Showcase</span><h2 class="sec-title">See what <span>others created</span></h2></div>
+    <div style="height:28px"></div>
+    <div class="sc-grid" id="showcaseGrid"></div>
+  </div>
+  <footer class="footer"><div class="con"><div class="ft-bot" style="border-top:none;padding-top:0"><p>2025 Dilcode. Made with care.</p></div></div></footer>
+</div>
+
+<!-- ABOUT -->
+<div class="view" id="view-about">
+  <div class="con sec">
+    <div class="ab-logo reveal"><div class="ab-mark">💌</div><div><div class="ab-nm">Dilcode</div><div class="ab-tag">dilcode.github.io</div></div></div>
+    <p class="ab-desc reveal">Dilcode creates beautiful, personalized digital pages for life's most meaningful moments — coded with care, delivered with love.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:44px" class="reveal">
+      <a href="https://instagram.com/dilcode_qr" target="_blank" class="btn btn-dark">Contact on Instagram</a>
+    </div>
+    <div class="ab-grid reveal">
+      <div class="ab-dc"><h4>What we do</h4><p>Custom animated web pages for Rose Day, Sorry, Propose, Birthday and more. Each page comes with a unique QR code you can share or print.</p></div>
+      <div class="ab-dc"><h4>How it works</h4><p>Choose a template, fill a short form — your personalized page is delivered via Instagram DM within 2-3 days.</p></div>
+      <div class="ab-dc"><h4>Delivery</h4><p>All orders delivered within 2-3 days. For urgent orders, DM us on Instagram and we will prioritize.</p></div>
+      <div class="ab-dc"><h4>Customization</h4><p>Want something unique? DM us on Instagram with your idea and we will build a completely custom page.</p></div>
+    </div>
+    <span class="sec-lbl">Reviews</span>
+    <h2 class="sec-title" style="margin-bottom:8px">What people <span>say</span></h2>
+    <div class="rev-grid" id="reviewsGrid"></div>
+  </div>
+  <footer class="footer"><div class="con"><div class="ft-bot" style="border-top:none;padding-top:0"><p>2025 Dilcode. Made with care.</p></div></div></footer>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="mbk" id="mbk">
+  <div class="mbox">
+    <div class="mhdr"><h3 id="mTitle">Order</h3><button class="mcls" onclick="closeModal()">&#x2715;</button></div>
+    <div class="mbdy" id="mbdy"></div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="adminPage" style="display:none">
+  <div class="adm-login" id="adminLogin">
+    <div class="adm-lb">
+      <div style="font-size:2rem;margin-bottom:14px">🔐</div>
+      <h2>Admin Login</h2><p>Enter password to continue</p>
+      <input class="fi" type="password" id="adminPw" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()" style="text-align:center;letter-spacing:.1em;margin-bottom:4px">
+      <div class="adm-err" id="adminErr"></div>
+      <button class="btn btn-rose btn-w" style="margin-top:12px;border-radius:10px" onclick="doLogin()">Login</button>
+    </div>
+  </div>
+  <div class="adm-wrap" id="adminWrap">
+    <div class="adm-nav">
+      <div class="adm-logo">Dilcode <span>Admin</span></div>
+      <div style="display:flex;gap:6px;align-items:center">
+        <button class="tbtn" onclick="toggleTheme()">☀️</button>
+        <button class="btn btn-ghost btn-sm" onclick="refreshOrders()">Refresh</button>
+        <button class="btn btn-ghost btn-sm" onclick="doLogout()">Logout</button>
+      </div>
+    </div>
+    <div class="adm-body">
+      <div class="adm-stats" id="adminStats"></div>
+      <div class="adm-tabs">
+        <button class="adm-tab active" id="atab-orders" onclick="switchTab('orders')">Orders</button>
+        <button class="adm-tab" id="atab-templates" onclick="switchTab('templates')">Templates</button>
+        <button class="adm-tab" id="atab-showcase" onclick="switchTab('showcase')">Showcase</button>
+      </div>
+      <div id="aOrders">
+        <div class="adm-card" style="margin-bottom:14px">
+          <div class="adm-ch"><h3>Add Order Manually</h3></div>
+          <div class="adm-cb">
+            <div class="adm-ff">
+              <div><label class="fl" style="font-size:.6rem">From</label><input class="fi" id="a_from" placeholder="Customer name"></div>
+              <div><label class="fl" style="font-size:.6rem">To</label><input class="fi" id="a_to" placeholder="Recipient name"></div>
+              <div><label class="fl" style="font-size:.6rem">IG/WA Contact</label><input class="fi" id="a_phone" placeholder="@ig or number"></div>
+              <div><label class="fl" style="font-size:.6rem">Occasion</label>
+                <select class="fi" id="a_occ">
+                  <option>Rose Day</option><option>Sorry</option><option>Propose Day</option>
+                  <option>Birthday</option><option>Anniversary</option><option>Friendship Day</option>
+                  <option>Chocolate Day</option><option>New Year</option>
+                </select>
+              </div>
+              <div><label class="fl" style="font-size:.6rem">Style</label>
+                <select class="fi" id="a_style"><option>Animated</option><option>Photo</option><option>Cinematic</option><option>Minimal</option></select>
+              </div>
+              <div><label class="fl" style="font-size:.6rem">Amount</label><input class="fi" id="a_amt" type="number" placeholder="99"></div>
+              <div><label class="fl" style="font-size:.6rem">Status</label>
+                <select class="fi" id="a_status"><option>Waiting</option><option>Accepted</option><option>Working</option><option>Complete</option><option>Cancelled</option></select>
+              </div>
+            </div>
+            <input class="fi" id="a_msg" placeholder="Message (optional)" style="margin-bottom:10px">
+            <button class="btn btn-rose btn-sm" onclick="addManualOrder()">Add Order</button>
+          </div>
+        </div>
+        <div class="adm-card">
+          <div class="adm-ch">
+            <h3>All Orders</h3>
+            <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+              <div class="fp">
+                <button class="fpill active" onclick="setFilter('all',this)">All</button>
+                <button class="fpill fp-w" onclick="setFilter('Waiting',this)">Waiting</button>
+                <button class="fpill fp-w" onclick="setFilter('Accepted',this)">Accepted</button>
+                <button class="fpill fp-c" onclick="setFilter('Complete',this)">Done</button>
+                <button class="fpill fp-x" onclick="setFilter('Cancelled',this)">Cancelled</button>
+              </div>
+              <div class="asrch"><input id="adminSearch" placeholder="Search..." oninput="renderOrders()"></div>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="adm-tbl">
+              <thead><tr><th>#</th><th>Date</th><th>From</th><th>To</th><th>Contact</th><th>Occasion</th><th>Template</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="ordersBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div id="aTemplates" style="display:none">
+        <div class="adm-card" style="margin-bottom:14px">
+          <div class="adm-ch"><h3>Add New Category</h3></div>
+          <div class="acf-grid">
+            <div><label class="fl" style="font-size:.6rem">Name</label><input class="fi" id="cat_name" placeholder="e.g. Diwali"></div>
+            <div><label class="fl" style="font-size:.6rem">Description</label><input class="fi" id="cat_desc" placeholder="Short description..."></div>
+            <div><label class="fl" style="font-size:.6rem">Background</label>
+              <select class="fi" id="cat_bg">
+                <option value="bg-rose">Rose</option><option value="bg-blue">Blue</option>
+                <option value="bg-purple">Purple</option><option value="bg-green">Green</option>
+                <option value="bg-amber">Amber</option><option value="bg-teal">Teal</option>
+                <option value="bg-brown">Brown</option><option value="bg-navy">Navy</option>
+              </select>
+            </div>
+            <div style="display:flex;align-items:flex-end"><button class="btn btn-rose btn-sm" onclick="addCategory()">Add</button></div>
+          </div>
+        </div>
+        <div id="catList"></div>
+      </div>
+      <div id="aShowcase" style="display:none">
+        <div class="adm-card" style="margin-bottom:14px">
+          <div class="adm-ch"><h3>Add Showcase Item</h3></div>
+          <div class="adm-cb">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:8px;align-items:end">
+              <div><label class="fl" style="font-size:.6rem">Occasion</label><input class="fi" id="sc_occ" placeholder="e.g. Rose Day"></div>
+              <div><label class="fl" style="font-size:.6rem">Style</label><select class="fi" id="sc_style"><option>Animated</option><option>Photo</option><option>Cinematic</option><option>Minimal</option></select></div>
+              <div><label class="fl" style="font-size:.6rem">Background</label><select class="fi" id="sc_bg"><option value="bg-rose">Rose</option><option value="bg-blue">Blue</option><option value="bg-purple">Purple</option><option value="bg-green">Green</option><option value="bg-amber">Amber</option><option value="bg-teal">Teal</option></select></div>
+              <div><label class="fl" style="font-size:.6rem">Preview Link</label><input class="fi" id="sc_link" placeholder="https://..."></div>
+              <div style="display:flex;align-items:flex-end"><button class="btn btn-rose btn-sm" onclick="addScItem()">Add</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="adm-card">
+          <div class="adm-ch"><h3>Showcase Items</h3><span style="font-size:.7rem;color:var(--text3)" id="scCount">0 items</span></div>
+          <div class="adm-cb" id="scAdmList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script>
+/* CONFIG */
+var SHEETS='https://script.google.com/macros/s/AKfycbzgvWXhtRD6-9cM1LAuH_Jijw119BdCuiyKsKmexkO_-74HdexYdkkWCOVbANc7Unwd/exec';
+var PASS='dilcode2024';
+var ESVC='service_2bhtq9k',ETPL='template_dfulpxl',EMAIL='gmas2609@gmail.com';
+
+/* DEFAULT DATA */
+var DEF_OCC=[
+  {key:'rose',name:'Rose Day',bg:'bg-rose',desc:'7th Feb — make that first rose unforgettable.',templates:[
+    {id:'r1',name:'Romantic Classic',style:'Animated',desc:'Falling petals, floating animations, romantic message',price:99,file:'rose-day.html'},
+    {id:'r2',name:'Photo Memories',style:'Photo',desc:'Your photos in a beautiful rose-themed slideshow',price:149,file:''},
+    {id:'r3',name:'Cinematic',style:'Cinematic',desc:'Dramatic filmy reveal — like a movie scene',price:199,file:''},
+    {id:'r4',name:'Minimal Elegant',style:'Minimal',desc:'Just words and a clean design — heartfelt simplicity',price:79,file:''}
+  ]},
+  {key:'sorry',name:'Sorry',bg:'bg-blue',desc:'Mistakes happen — a heartfelt sorry is an art.',templates:[
+    {id:'s1',name:'Heartfelt Apology',style:'Animated',desc:'Soft glow, deeply emotional animated message',price:99,file:'sorry-page.html'},
+    {id:'s2',name:'Photo + Sorry',style:'Photo',desc:'A heartfelt sorry with your shared photos',price:149,file:''},
+    {id:'s3',name:'Cinematic Sorry',style:'Cinematic',desc:'Rain effect, slow reveal, emotional feel',price:199,file:''},
+    {id:'s4',name:'Simple Sorry',style:'Minimal',desc:'Pure honesty — just words',price:79,file:''}
+  ]},
+  {key:'propose',name:'Propose Day',bg:'bg-purple',desc:'8th Feb — the moment that changes everything.',templates:[
+    {id:'p1',name:'Ring Reveal',style:'Animated',desc:'Dramatic ring animation, stars, proposal',price:149,file:''},
+    {id:'p2',name:'Photo Love Story',style:'Photo',desc:'Your moments building up to a proposal',price:199,file:''},
+    {id:'p3',name:'Cinematic Proposal',style:'Cinematic',desc:'Hollywood-style dramatic proposal',price:229,file:''},
+    {id:'p4',name:'Simple Propose',style:'Minimal',desc:'One question, one heart',price:99,file:''}
+  ]},
+  {key:'birthday',name:'Birthday',bg:'bg-green',desc:'Their day — your love, in the most beautiful way.',templates:[
+    {id:'b1',name:'Party Blast',style:'Animated',desc:'Confetti, balloons, full celebration',price:99,file:''},
+    {id:'b2',name:'Memory Reel',style:'Photo',desc:'A birthday slideshow of their best moments',price:149,file:''},
+    {id:'b3',name:'Cinematic Birthday',style:'Cinematic',desc:'Dramatic countdown and grand entry',price:199,file:''},
+    {id:'b4',name:'Elegant Wish',style:'Minimal',desc:'Clean, classy birthday wish',price:79,file:''}
+  ]},
+  {key:'anniversary',name:'Anniversary',bg:'bg-amber',desc:'Years of togetherness — captured in one page.',templates:[
+    {id:'a1',name:'Golden Memories',style:'Animated',desc:'Gold particles, years counter, love story',price:149,file:''},
+    {id:'a2',name:'Photo Journey',style:'Photo',desc:'Years of photos — your entire journey',price:199,file:''},
+    {id:'a3',name:'Cinematic Love',style:'Cinematic',desc:'Movie-style anniversary',price:229,file:''},
+    {id:'a4',name:'Simple Gold',style:'Minimal',desc:'Simple words with deep meaning',price:99,file:''}
+  ]},
+  {key:'friendship',name:'Friendship Day',bg:'bg-teal',desc:"That friend who is always there — let them know.",templates:[
+    {id:'f1',name:'Best Friends',style:'Animated',desc:'Fun confetti, friendship vibe',price:99,file:''},
+    {id:'f2',name:'Memory Wall',style:'Photo',desc:'All your best friendship photos',price:149,file:''},
+    {id:'f3',name:'Cinematic Tribute',style:'Cinematic',desc:'Slow motion friendship tribute',price:199,file:''},
+    {id:'f4',name:'Heartfelt Note',style:'Minimal',desc:'A simple honest message',price:79,file:''}
+  ]},
+  {key:'chocolate',name:'Chocolate Day',bg:'bg-brown',desc:'9th Feb — a sweet surprise just for them.',templates:[
+    {id:'c1',name:'Sweet Surprise',style:'Animated',desc:'Melting chocolate animation',price:99,file:''},
+    {id:'c2',name:'Sweet Memories',style:'Photo',desc:'Your photos with Chocolate Day message',price:149,file:''},
+    {id:'c3',name:'Cinematic Sweet',style:'Cinematic',desc:'Slow motion chocolate reveal',price:199,file:''},
+    {id:'c4',name:'Simple Sweet',style:'Minimal',desc:'A sweet message from the heart',price:79,file:''}
+  ]},
+  {key:'newyear',name:'New Year',bg:'bg-navy',desc:'Start the new year in the most special way.',templates:[
+    {id:'n1',name:'Fireworks Show',style:'Animated',desc:'Fireworks and midnight countdown',price:99,file:''},
+    {id:'n2',name:'Year in Photos',style:'Photo',desc:'The whole year in your photos',price:149,file:''},
+    {id:'n3',name:'Cinematic NYE',style:'Cinematic',desc:'Dramatic countdown, golden sparks',price:199,file:''},
+    {id:'n4',name:'Elegant Wish',style:'Minimal',desc:'A warm New Year wish',price:79,file:''}
+  ]}
+];
+var DEF_SC=[
+  {id:'sc1',occ:'Rose Day',style:'Animated',bg:'bg-rose',link:'rose-day.html'},
+  {id:'sc2',occ:'Birthday',style:'Photo',bg:'bg-green',link:''},
+  {id:'sc3',occ:'Sorry',style:'Cinematic',bg:'bg-blue',link:'sorry-page.html'},
+  {id:'sc4',occ:'Propose Day',style:'Animated',bg:'bg-purple',link:''},
+  {id:'sc5',occ:'Anniversary',style:'Photo',bg:'bg-amber',link:''},
+  {id:'sc6',occ:'Friendship Day',style:'Minimal',bg:'bg-teal',link:''}
+];
+var REVIEWS=[
+  {name:'Priya S.',date:'May 2025',stars:5,text:'Absolutely loved it! The Rose Day page made my friend cry happy tears.',init:'P'},
+  {name:'Rahul M.',date:'April 2025',stars:5,text:'Ordered the Sorry page. The letter design was stunning and she forgave me instantly!',init:'R'},
+  {name:'Anjali K.',date:'March 2025',stars:5,text:'The birthday page with photos was incredible. Best gift idea ever!',init:'A'},
+  {name:'Vikas T.',date:'February 2025',stars:5,text:'Used it for Propose Day. She said yes! Thank you Dilcode.',init:'V'},
+  {name:'Deepa R.',date:'January 2025',stars:5,text:'Custom anniversary page. Team was super responsive. Beyond expectations.',init:'D'},
+  {name:'Siddharth L.',date:'December 2024',stars:5,text:'New Year page for my whole friend group. Everyone loved scanning the QR.',init:'S'}
+];
+
+/* STATE */
+var occasions=[],showcase=[],orders=[],adminFilter='all';
+
+/* STORAGE */
+function loadData(){
+  var o=localStorage.getItem('dc_occ');
+  occasions=o?JSON.parse(o):JSON.parse(JSON.stringify(DEF_OCC));
+  var s=localStorage.getItem('dc_sc');
+  showcase=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF_SC));
+  var r=localStorage.getItem('dc_ord');
+  orders=r?JSON.parse(r):[];
+}
+function saveOcc(){localStorage.setItem('dc_occ',JSON.stringify(occasions));}
+function saveSc(){localStorage.setItem('dc_sc',JSON.stringify(showcase));}
+function saveOrd(){localStorage.setItem('dc_ord',JSON.stringify(orders));}
+
+/* THEME */
+function initTheme(){
+  var t=localStorage.getItem('dc_theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  document.querySelectorAll('.tbtn').forEach(function(b){b.textContent=t==='dark'?'☀️':'🌙';});
+}
+function toggleTheme(){
+  var cur=document.documentElement.getAttribute('data-theme');
+  var next=cur==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('dc_theme',next);
+  document.querySelectorAll('.tbtn').forEach(function(b){b.textContent=next==='dark'?'☀️':'🌙';});
+}
+
+/* ROUTER */
+function goTo(v){
+  document.querySelectorAll('.view').forEach(function(x){x.classList.remove('active');});
+  var el=document.getElementById('view-'+v);
+  if(el)el.classList.add('active');
+  ['home','customization','about','myorders'].forEach(function(n){
+    var b=document.getElementById('nl-'+n);
+    if(b)b.classList.toggle('active',n===v);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  history.pushState({v:v},'',v==='home'?location.pathname:'#'+v);
+  initReveal();
+  if(v==='customization')buildShowcase();
+  if(v==='about')buildReviews();
+  if(v==='myorders')loadMyOrders();
+}
+window.addEventListener('popstate',function(e){
+  if(e.state&&e.state.v)goTo(e.state.v);else goTo('home');
+});
+function scrollToOcc(){
+  if(document.getElementById('view-home').classList.contains('active')){
+    var el=document.getElementById('occasions');
+    if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+  } else {
+    goTo('home');
+    setTimeout(function(){
+      var el=document.getElementById('occasions');
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    },200);
+  }
+}
+
+/* HELPERS */
+function findOcc(key){for(var i=0;i<occasions.length;i++)if(occasions[i].key===key)return occasions[i];return null;}
+function findTmpl(key,tid){var o=findOcc(key);if(!o)return null;for(var i=0;i<o.templates.length;i++)if(o.templates[i].id===tid)return o.templates[i];return null;}
+function esc(s){return String(s).replace(/'/g,"\'");}
+function val(id){var el=document.getElementById(id);return el?(el.value||'').trim():'';}
+function checked(id){var el=document.getElementById(id);return el?el.checked:false;}
+
+/* BUILD OCCASION GRID */
+function buildOccGrid(){
+  var g=document.getElementById('occGrid');
+  if(!g)return;
+  g.innerHTML='';
+  occasions.forEach(function(o){
+    var c=document.createElement('div');
+    c.className='occ-card reveal';
+    c.innerHTML=
+      '<div class="occ-thumb '+o.bg+'">' +
+        '<div class="occ-lbl">'+o.templates.length+' styles</div>' +
+        '<div class="occ-txt">'+o.name+'</div>' +
+      '</div>' +
+      '<div class="occ-body">' +
+        '<h3>'+o.name+'</h3>' +
+        '<p>'+o.desc+'</p>' +
+        '<div class="occ-foot">' +
+          '<span class="occ-price">from Rs. 79</span>' +
+          '<div class="occ-arr">&#8599;</div>' +
+        '</div>' +
+      '</div>';
+    (function(key){c.addEventListener('click',function(){openTemplates(key);});})(o.key);
+    g.appendChild(c);
+  });
+  initReveal();
+}
+
+/* TEMPLATES */
+function openTemplates(key){
+  var occ=findOcc(key);
+  if(!occ)return;
+  document.getElementById('tmplBC').textContent=occ.name;
+  document.getElementById('tmplTitle').textContent=occ.name+' Templates';
+  var g=document.getElementById('tmplGrid');
+  g.innerHTML='';
+  occ.templates.forEach(function(t){
+    var prevBtn=t.file
+      ? '<a href="'+t.file+'" target="_blank" class="btn btn-ghost btn-sm" style="text-decoration:none">Preview</a>'
+      : '<button class="btn btn-ghost btn-sm" disabled style="opacity:.4;cursor:not-allowed">Preview Soon</button>';
+    var c=document.createElement('div');
+    c.className='tc';
+    c.innerHTML=
+      '<div class="tc-thumb '+occ.bg+'">' +
+        '<div class="tc-name">'+t.name+'</div>' +
+        '<div class="tc-stag">'+t.style+'</div>' +
+      '</div>' +
+      '<div class="tc-body">' +
+        '<h4>'+t.name+'</h4>' +
+        '<p>'+t.desc+'</p>' +
+        '<div class="tc-price-row"><span class="tc-price">Rs. '+t.price+'</span></div>' +
+        '<div class="tc-acts">' +
+          prevBtn +
+          '<button class="btn btn-dark btn-sm" data-key="'+key+'" data-tid="'+t.id+'" onclick="openOrderModal(this)">Order Now</button>' +
+          '<button class="btn btn-out btn-sm" data-key="'+key+'" data-tid="'+t.id+'" onclick="openCustModal(this)">Customize</button>' +
+        '</div>' +
+      '</div>';
+    g.appendChild(c);
+  });
+  goTo('templates');
+}
+
+/* MODAL */
+function openOrderModal(el){
+  var ok=el.getAttribute('data-key'),tid=el.getAttribute('data-tid');
+  var occ=findOcc(ok),t=findTmpl(ok,tid);
+  if(!occ||!t)return;
+  document.getElementById('mTitle').textContent=occ.name+' — '+t.name;
+  document.getElementById('mbdy').innerHTML=buildForm(ok,t);
+  showModal();
+}
+function openCustModal(el){
+  var ok=el.getAttribute?el.getAttribute('data-key'):el,tid=el.getAttribute?el.getAttribute('data-tid'):arguments[1];
+  var occ=findOcc(ok),t=findTmpl(ok,tid);
+  if(!occ||!t)return;
+  document.getElementById('mTitle').textContent='Customize — '+t.name;
+  document.getElementById('mbdy').innerHTML=
+    '<p style="font-size:.84rem;color:var(--text2);margin-bottom:16px;line-height:1.7">Want this template customized differently? Reach out on Instagram and describe your vision.</p>' +
+    '<a href="https://instagram.com/dilcode_qr" target="_blank" class="soc-btn s-ig btn-w" style="border-radius:10px;margin-bottom:10px;display:flex">' +
+      '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>' +
+      ' DM on Instagram @dilcode_qr' +
+    '</a>' +
+    '<p style="font-size:.7rem;color:var(--text3);text-align:center;line-height:1.5">Tell us which template and how you want it customized. We respond within a few hours.</p>';
+  showModal();
+}
+function buildForm(ok,t){
+  var sf={
+    rose:'<div class="fg"><label class="fl">Your Message</label><textarea class="fi" id="f_msg" rows="3" placeholder="Write what you want to say from your heart..."></textarea></div><div class="fg"><label class="fl">Special Date (optional)</label><input class="fi" id="f_extra" placeholder="e.g. 7th February 2025"></div>',
+    sorry:'<div class="fg"><label class="fl">Your Apology Message</label><textarea class="fi" id="f_msg" rows="4" placeholder="Write your apology — honest and heartfelt..."></textarea></div><div class="fg"><label class="fl">Brief context (optional)</label><input class="fi" id="f_extra" placeholder="What happened? Helps us personalize"></div>',
+    propose:'<div class="fg"><label class="fl">Your Proposal Message</label><textarea class="fi" id="f_msg" rows="3" placeholder="The words you want to say..."></textarea></div><div class="fg"><label class="fl">Love story (optional)</label><textarea class="fi" id="f_extra" rows="2" placeholder="When did you meet? Any special memory..."></textarea></div>',
+    birthday:'<div class="fg"><label class="fl">Birthday Wish Message</label><textarea class="fi" id="f_msg" rows="3" placeholder="Your heartfelt birthday wish..."></textarea></div><div class="fg"><label class="fl">Their Age and Birthday Date</label><input class="fi" id="f_extra" placeholder="e.g. Turning 22 on 15th June 2025"></div>',
+    anniversary:'<div class="fg"><label class="fl">Anniversary Message</label><textarea class="fi" id="f_msg" rows="3" placeholder="Your message for this milestone..."></textarea></div><div class="fg"><label class="fl">How many years and date?</label><input class="fi" id="f_extra" placeholder="e.g. 3 years on 20th June 2025"></div>',
+    friendship:'<div class="fg"><label class="fl">Message for your Friend</label><textarea class="fi" id="f_msg" rows="3" placeholder="What do you want to say?"></textarea></div><div class="fg"><label class="fl">How long friends?</label><input class="fi" id="f_extra" placeholder="e.g. Friends since 2018"></div>',
+    chocolate:'<div class="fg"><label class="fl">Sweet Message</label><textarea class="fi" id="f_msg" rows="3" placeholder="Your sweet Chocolate Day message..."></textarea></div><div class="fg"><label class="fl">Date</label><input class="fi" id="f_extra" placeholder="e.g. 9th February 2025"></div>',
+    newyear:'<div class="fg"><label class="fl">New Year Wish</label><textarea class="fi" id="f_msg" rows="3" placeholder="Your New Year wishes..."></textarea></div><div class="fg"><label class="fl">Year</label><input class="fi" id="f_extra" placeholder="e.g. 2026"></div>'
+  };
+  var specific=sf[ok]||'<div class="fg"><label class="fl">Your Message</label><textarea class="fi" id="f_msg" rows="3" placeholder="Write your message..."></textarea></div><div class="fg"><label class="fl">Extra details (optional)</label><input class="fi" id="f_extra" placeholder="Date, or anything else..."></div>';
+  var photoNote=t.style==='Photo'?'<div class="fg"><label class="fl">Photos Note</label><input class="fi" id="f_photos" placeholder="How many photos? We will ask on Instagram"></div>':'';
+  var ac=(t.style==='Animated'||t.style==='Cinematic')?'checked':'';
+  var pc=t.style==='Photo'?'checked':'';
+  return '<div class="frow">' +
+    '<div class="fg"><label class="fl">Your Name</label><input class="fi" id="f_from" placeholder="Your name..."></div>' +
+    '<div class="fg"><label class="fl">Their Name</label><input class="fi" id="f_to" placeholder="Their name..."></div>' +
+    '</div>' +
+    '<div class="fg">' +
+      '<label class="fl">WhatsApp Number <span style="color:var(--text3);font-weight:400">or</span> Instagram ID <span style="color:var(--rose)">*</span></label>' +
+      '<input class="fi" id="f_contact" placeholder="e.g. 9876543210 or @yourinstagram">' +
+      '<div class="cnote">Used only to deliver your completed page and for order updates. Track order anytime in My Orders.</div>' +
+    '</div>' +
+    specific+photoNote+
+    '<label class="fl" style="margin-bottom:6px">What do you need?</label>' +
+    '<div class="fcks">' +
+      '<label class="fck"><input type="checkbox" id="c_anim" '+ac+'><label for="c_anim">Animation</label></label>' +
+      '<label class="fck"><input type="checkbox" id="c_photo" '+pc+'><label for="c_photo">Add Photos</label></label>' +
+      '<label class="fck"><input type="checkbox" id="c_music"><label for="c_music">Background Music</label></label>' +
+      '<label class="fck"><input type="checkbox" id="c_qr" checked><label for="c_qr">QR Code</label></label>' +
+    '</div>' +
+    '<div class="fpr"><span class="fpr-l">Total Amount</span><span class="fpr-v">Rs. '+t.price+'</span></div>' +
+    '<button class="btn btn-rose btn-w" style="border-radius:10px" data-ok="'+ok+'" data-tid="'+t.id+'" onclick="doSubmit(this)">Place Order</button>' +
+    '<p style="font-size:.68rem;color:var(--text3);text-align:center;margin-top:9px;line-height:1.5">We will contact you on Instagram for payment. Your page ready in 2-3 days.</p>';
+}
+function showModal(){document.getElementById('mbk').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('mbk').classList.remove('open');document.body.style.overflow='';}
+/* modal listener moved to init */
+
+/* SUBMIT ORDER */
+
+
+function doOkBtn(){closeModal();goTo('myorders');}
+function doSubmit(el){
+  var ok=el.getAttribute('data-ok'),tid=el.getAttribute('data-tid');
+  submitOrder(ok,tid);
+}
+function submitOrder(ok,tid){
+  var from=val('f_from'),to=val('f_to'),contact=val('f_contact');
+  if(!from){showToast('Please enter your name','error');return;}
+  if(!to){showToast('Please enter their name','error');return;}
+  if(!contact){showToast('Please enter WhatsApp number or Instagram ID','error');return;}
+  var occ=findOcc(ok),t=findTmpl(ok,tid);
+  if(!occ||!t)return;
+  var msg=val('f_msg')||'--';
+  var extra=val('f_extra')||'--';
+  var feat=[];
+  if(checked('c_anim'))feat.push('Animation');
+  if(checked('c_photo'))feat.push('Photos');
+  if(checked('c_music'))feat.push('Music');
+  if(checked('c_qr'))feat.push('QR Code');
+  var now=new Date().toLocaleString('en-IN');
+  var dl=new Date(Date.now()+3*24*3600000).toISOString();
+  var od={id:'DC'+Date.now(),date:now,from:from,to:to,phone:contact,contact:contact,occasion:occ.name,template:t.name,style:t.style,message:msg,features:feat.join(', ')||'Default',extra:extra,amount:t.price,status:'Waiting',deadline:dl};
+  orders.unshift(od);saveOrd();
+  var ids=JSON.parse(localStorage.getItem('dc_my_ids')||'[]');
+  ids.unshift(od.id);localStorage.setItem('dc_my_ids',JSON.stringify(ids.slice(0,20)));
+  sheetsSave(od);sendEmail(od,'new');
+  document.getElementById('mbdy').innerHTML=
+    '<div class="succ-wrap">' +
+      '<div class="succ-ico">&#x2705;</div>' +
+      '<h3>Order Placed!</h3>' +
+    '</div>' +
+    '<div class="succ-box">' +
+      'We received your order for <strong>'+occ.name+' - '+t.name+'</strong>.<br><br>' +
+      'Status is now <strong>Waiting</strong> - we will review and accept it shortly. Track anytime in <strong>My Orders</strong>.<br><br>' +
+      'For payment and updates we will reach out on <strong>'+contact+'</strong>. You can also DM us at <strong>@dilcode_qr</strong> on Instagram.' +
+    '</div>' +
+    '<a href="https://instagram.com/dilcode_qr" target="_blank" class="soc-btn s-ig btn-w" style="border-radius:10px;margin-bottom:10px;display:flex">Contact us on Instagram @dilcode_qr</a>' +
+    '<button class="btn btn-dark btn-w" style="border-radius:10px" onclick="closeModal();goTo(&quot;myorders&quot;)">OK - View My Orders</button>';
+}
+
+/* MY ORDERS */
+function siInfo(s){
+  var m={
+    Waiting:{cls:'os-waiting',icon:'&#x23F3;',label:'Waiting',msg:'Your order is in the queue. We have many orders and will review yours shortly - usually within a few hours.'},
+    Accepted:{cls:'os-accepted',icon:'&#x2705;',label:'Accepted',msg:'Great news! Your order has been accepted. We will start working on it very soon.'},
+    Working:{cls:'os-working',icon:'&#x1F3A8;',label:'Being Created',msg:'We are currently working on your custom page! It will be delivered to you within 2-3 days.'},
+    Complete:{cls:'os-complete',icon:'&#x1F389;',label:'Delivered',msg:'Your custom page is ready and delivered! Check your Instagram DM from @dilcode_qr.'},
+    Cancelled:{cls:'os-cancelled',icon:'&#x274C;',label:'Cancelled',msg:'This order has been cancelled. Contact @dilcode_qr on Instagram for more info or to place a new order.'}
+  };
+  return m[s]||{cls:'os-waiting',icon:'&#x1F4CB;',label:s,msg:'Your order is being processed.'};
+}
+function buildTracker(s){
+  var steps=['Waiting','Accepted','Working','Complete'];
+  if(s==='Cancelled')return '';
+  var ci=steps.indexOf(s);if(ci<0)ci=0;
+  var h='<div style="display:flex;align-items:center;margin:14px 0;overflow-x:auto;padding-bottom:4px">';
+  for(var i=0;i<steps.length;i++){
+    var act=i<=ci,done=i<ci,cur=i===ci;
+    h+='<div style="display:flex;align-items:center;flex:1;min-width:0">';
+    h+='<div style="display:flex;flex-direction:column;align-items:center;flex:1">';
+    h+='<div style="width:26px;height:26px;border-radius:50%;border:2px solid '+(act?'var(--rose)':'var(--border)')+';background:'+(act?'var(--rose)':'var(--bg3)')+';display:flex;align-items:center;justify-content:center;font-size:.66rem;color:'+(act?'#fff':'var(--text3)')+';font-weight:700">'+(done?'&#x2713;':String(i+1))+'</div>';
+    h+='<div style="font-size:.6rem;color:'+(act?'var(--rose)':'var(--text3)')+';margin-top:3px;text-align:center;font-weight:'+(cur?'700':'400')+';white-space:nowrap">'+steps[i]+'</div>';
+    h+='</div>';
+    if(i<steps.length-1)h+='<div style="height:2px;flex:1;background:'+(done?'var(--rose)':'var(--border)')+';margin-bottom:14px"></div>';
+    h+='</div>';
+  }
+  return h+'</div>';
+}
+function loadMyOrders(){
+  var el=document.getElementById('myOrdersList');
+  if(!el)return;
+  el.innerHTML='<div class="loading"><div class="spinner"></div>Loading...</div>';
+  var ids=JSON.parse(localStorage.getItem('dc_my_ids')||'[]');
+  if(!ids.length){el.innerHTML='<div class="no-orders"><p>No orders placed from this device yet.</p><p style="margin-top:8px;font-size:.76rem;color:var(--text3)">Orders you place will appear here automatically.</p></div>';return;}
+  fetch(SHEETS+'?action=getAll')
+    .then(function(r){return r.json();})
+    .then(function(data){
+      var list=[];
+      if(data&&data.length>1){
+        list=data.slice(1).map(function(row){
+          return {id:row[0],date:row[1],from:row[2],to:row[3],phone:row[4],occasion:row[5],template:row[6],style:row[7],message:row[8],features:row[9],amount:Number(row[10]),status:row[11]};
+        }).filter(function(o){return ids.indexOf(o.id)>-1;});
+      }
+      if(!list.length)list=orders.filter(function(o){return ids.indexOf(o.id)>-1;});
+      renderMyOrders(list);
+    })
+    .catch(function(){renderMyOrders(orders.filter(function(o){return ids.indexOf(o.id)>-1;}));});
+}
+function renderMyOrders(list){
+  var el=document.getElementById('myOrdersList');
+  if(!el)return;
+  if(!list.length){el.innerHTML='<div class="no-orders"><p>No orders found.</p></div>';return;}
+  var h='';
+  list.forEach(function(o){
+    var si=siInfo(o.status||'Waiting');
+    var tr=buildTracker(o.status||'Waiting');
+    var bg=o.status==='Cancelled'?'rgba(220,38,38,.06)':o.status==='Complete'?'rgba(22,163,74,.06)':'var(--bg3)';
+    h+='<div class="order-card">' +
+      '<div class="order-top">' +
+        '<div>' +
+          '<div class="order-occ">'+(o.occasion||'--')+' - '+(o.template||'Custom')+'</div>' +
+          '<div class="order-num">Order #'+(o.id||'').slice(-6).toUpperCase()+' &nbsp;|&nbsp; '+((o.date||'').split(',')[0]||'--')+'</div>' +
+        '</div>' +
+        '<span class="ostatus '+si.cls+'">'+si.icon+' '+si.label+'</span>' +
+      '</div>' +
+      tr+
+      '<div class="order-msg" style="background:'+bg+'">'+si.msg+'</div>' +
+      '<div class="order-details">' +
+        '<div class="od-item"><span class="od-label">From</span><span class="od-value">'+(o.from||'--')+'</span></div>' +
+        '<div class="od-item"><span class="od-label">To</span><span class="od-value">'+(o.to||'--')+'</span></div>' +
+        '<div class="od-item"><span class="od-label">Amount</span><span class="od-value">Rs. '+(o.amount||'--')+'</span></div>' +
+        '<div class="od-item"><span class="od-label">Style</span><span class="od-value">'+(o.style||'--')+'</span></div>' +
+      '</div>' +
+      '<div class="order-actions">' +
+        (o.status==='Waiting'?'<button class="btn btn-sm" style="background:rgba(220,38,38,.1);color:#dc2626;border:none" data-id="'+o.id+'" onclick="cancelOrder(this)">Cancel Order</button>':'')+
+        '<a href="https://instagram.com/dilcode_qr" target="_blank" class="btn btn-ghost btn-sm">Contact @dilcode_qr</a>' +
+      '</div>' +
+    '</div>';
+  });
+  el.innerHTML=h;
+}
+function cancelOrder(el){
+  var id=typeof el==='string'?el:el.getAttribute('data-id');
+  if(!confirm('Cancel this order?'))return;
+  sheetsUpdate(id,'Cancelled');
+  var o=orders.find(function(x){return x.id===id;});
+  if(o){o.status='Cancelled';saveOrd();}
+  showToast('Cancellation requested','success');
+  setTimeout(loadMyOrders,800);
+}
+
+/* SHOWCASE */
+function buildShowcase(){
+  var g=document.getElementById('showcaseGrid');if(!g)return;g.innerHTML='';
+  showcase.forEach(function(s){
+    var occ=null;
+    for(var i=0;i<occasions.length;i++){
+      if(occasions[i].name===s.occ||occasions[i].name.toLowerCase().indexOf(s.occ.toLowerCase())>-1){occ=occasions[i];break;}
+    }
+    var tmpl=occ&&occ.templates.length?(occ.templates.find(function(t){return t.style===s.style;})||occ.templates[0]):null;
+    var prevBtn=s.link?'<a href="'+s.link+'" target="_blank" class="btn btn-ghost btn-sm" style="text-decoration:none;font-size:.72rem">Preview</a>':'';
+    var ordBtn=(occ&&tmpl)?'<button class="btn btn-dark btn-sm" style="font-size:.72rem" data-key="'+occ.key+'" data-tid="'+tmpl.id+'" onclick="openOrderModal(this)">Order Similar</button>':'';
+    var custBtn=occ?'<button class="btn btn-out btn-sm" style="font-size:.72rem" data-key="'+occ.key+'" data-tid="'+(tmpl?tmpl.id:'')+"'" + ' onclick="openCustModal(this)">Customize</button>':'';
+    var c=document.createElement('div');c.className='sc-card reveal';
+    c.innerHTML=
+      '<div class="sc-thumb '+s.bg+'"><div class="sc-txt">'+s.occ+'</div></div>' +
+      '<div class="sc-info">' +
+        '<div class="sc-occ-lbl">'+s.occ+' - '+s.style+'</div>' +
+        '<div style="font-family:var(--fd);font-size:.86rem;font-style:italic;color:var(--text2)">Made for a special someone</div>' +
+        '<div class="sc-acts">'+prevBtn+ordBtn+custBtn+'</div>' +
+      '</div>';
+    g.appendChild(c);
+  });
+  initReveal();
+}
+
+/* REVIEWS */
+function buildReviews(){
+  var g=document.getElementById('reviewsGrid');if(!g)return;g.innerHTML='';
+  REVIEWS.forEach(function(r){
+    var stars='';for(var i=0;i<r.stars;i++)stars+='&#x2605;';
+    var c=document.createElement('div');c.className='rv reveal';
+    c.innerHTML=
+      '<div class="rv-hdr">' +
+        '<div class="rv-av">'+r.init+'</div>' +
+        '<div><div class="rv-n">'+r.name+'</div><div class="rv-d">'+r.date+'</div></div>' +
+      '</div>' +
+      '<div class="rv-stars">'+stars+'</div>' +
+      '<p class="rv-txt">'+r.text+'</p>';
+    g.appendChild(c);
+  });
+  initReveal();
+}
+
+/* REVEAL */
+function initReveal(){
+  var els=document.querySelectorAll('.reveal:not(.visible)');
+  if(!els.length)return;
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e,i){
+      if(e.isIntersecting){setTimeout(function(){e.target.classList.add('visible');},i*55);obs.unobserve(e.target);}
+    });
+  },{threshold:.08});
+  els.forEach(function(el){obs.observe(el);});
+}
+
+/* NAV */
+window.addEventListener('scroll',function(){document.getElementById('nav').style.boxShadow=window.scrollY>20?'var(--sh2)':'';});
+function toggleMM(){document.getElementById('mmenu').classList.toggle('open');}
+function closeMM(){document.getElementById('mmenu').classList.remove('open');}
+
+/* TOAST */
+function showToast(msg,type){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast '+(type||'')+' show';
+  setTimeout(function(){t.classList.remove('show');},3000);
+}
+
+/* SHEETS */
+function sheetsSave(o){fetch(SHEETS,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)}).catch(function(){});}
+function sheetsUpdate(id,s){fetch(SHEETS,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'updateStatus',id:id,status:s})}).catch(function(){});}
+function sheetsDel(id){fetch(SHEETS+'?action=delete&id='+id,{mode:'no-cors'}).catch(function(){});}
+
+/* EMAIL */
+function calLink(o){
+  var dl=o.deadline?new Date(o.deadline):new Date(Date.now()+3*24*3600000);
+  var s=dl.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+  var e=new Date(dl.getTime()+3600000).toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Dilcode Deadline - '+o.occasion+' for '+o.from)+'&dates='+s+'/'+e+'&details='+encodeURIComponent('Order: '+o.template+'\nContact: '+o.phone+'\nAmount: Rs.'+o.amount)+'&sf=true&output=xml';
+
+
+}
+function sendEmail(o,type){
+  if(!EMAIL)return;
+  if(typeof emailjs==='undefined')return;
+  var labs={new:'NEW ORDER',cancel:'ORDER CANCELLED',complete:'ORDER COMPLETE',accepted:'ORDER ACCEPTED'};
+  var subs={new:'New Order - '+o.occasion+' from '+o.from,cancel:'Cancelled - '+o.occasion,complete:'Complete - '+o.occasion,accepted:'Accepted - '+o.occasion};
+  emailjs.send(ESVC,ETPL,{
+    to_email:EMAIL,to_name:'Dilcode Admin',
+    subject:subs[type]||subs.new,order_type:labs[type]||labs.new,
+    from_name:o.from||'--',to_name_order:o.to||'--',
+    occasion:o.occasion||'--',template_name:o.template||'--',
+    style:o.style||'--',amount:o.amount||'--',
+    phone:o.contact||o.phone||'--',message:o.message||'--',
+    features:o.features||'Default',
+    deadline:o.deadline?new Date(o.deadline).toLocaleDateString('en-IN'):'2-3 days',
+    order_id:o.id,calendar_link:calLink(o),status:o.status
+  }).then(function(){console.log('Email sent');}).catch(function(e){console.log('Email err:',e);});
+}
+
+/* ADMIN */
+function showAdmin(){
+  document.querySelectorAll('.view').forEach(function(v){v.style.display='none';});
+  document.getElementById('adminPage').style.display='block';
+  document.getElementById('nav').style.display='none';
+}
+function hideAdmin(){
+  document.querySelectorAll('.view').forEach(function(v){v.style.display='';});
+  document.getElementById('adminPage').style.display='none';
+  document.getElementById('nav').style.display='';
+}
+function doLogin(){
+  if(val('adminPw')===PASS){
+    document.getElementById('adminLogin').style.display='none';
+    document.getElementById('adminWrap').classList.add('show');
+    refreshOrders();renderStats();renderCats();renderScAdm();
+  } else {
+    document.getElementById('adminErr').textContent='Incorrect password';
+  }
+}
+function doLogout(){
+  document.getElementById('adminWrap').classList.remove('show');
+  document.getElementById('adminLogin').style.display='flex';
+  document.getElementById('adminPw').value='';
+  hideAdmin();goTo('home');
+}
+function switchTab(tab){
+  ['orders','templates','showcase'].forEach(function(t){
+    document.getElementById('a'+t.charAt(0).toUpperCase()+t.slice(1)).style.display=t===tab?'block':'none';
+    document.getElementById('atab-'+t).classList.toggle('active',t===tab);
+  });
+  if(tab==='templates')renderCats();
+  if(tab==='showcase')renderScAdm();
+}
+function refreshOrders(){
+  fetch(SHEETS+'?action=getAll')
+    .then(function(r){return r.json();})
+    .then(function(data){
+      if(data&&data.length>1){
+        orders=data.slice(1).map(function(row){
+          return {id:row[0],date:row[1],from:row[2],to:row[3],phone:row[4],occasion:row[5],template:row[6],style:row[7],message:row[8],features:row[9],amount:Number(row[10]),status:row[11],contact:row[4]};
+        }).filter(function(o){return o.id;});
+        saveOrd();
+      }
+      renderOrders();renderStats();showToast('Refreshed!','success');
+    })
+    .catch(function(){renderOrders();showToast('Using cached orders');});
+}
+function addManualOrder(){
+  var from=val('a_from'),to=val('a_to');
+  if(!from||!to){showToast('Fill From and To','error');return;}
+  var occ=val('a_occ'),style=val('a_style');
+  var o={id:'DC'+Date.now(),date:new Date().toLocaleString('en-IN'),from:from,to:to,
+    phone:val('a_phone'),contact:val('a_phone'),
+    occasion:occ,template:occ+' - '+style,style:style,
+    amount:parseInt(val('a_amt'))||99,features:'Default',
+    message:val('a_msg')||'--',extra:'--',
+    status:val('a_status')||'Waiting',
+    deadline:new Date(Date.now()+3*24*3600000).toISOString()};
+  orders.unshift(o);saveOrd();sheetsSave(o);
+  renderOrders();renderStats();
+  ['a_from','a_to','a_phone','a_amt','a_msg'].forEach(function(id){document.getElementById(id).value='';});
+  showToast('Order added','success');sendEmail(o,'new');
+}
+
+function doUpd(el){
+  var id=el.getAttribute('data-id'),s=el.getAttribute('data-s');
+  updateStatus(id,s);
+}
+function updateStatus(el,s){
+  var id=typeof el==='string'?el:(el.getAttribute?el.getAttribute('data-id'):el);
+  if(!s&&el.getAttribute)s=el.getAttribute('data-status');
+  var o=orders.find(function(x){return x.id===id;});if(!o)return;
+  var prev=o.status;o.status=s;saveOrd();sheetsUpdate(id,s);
+  renderOrders();renderStats();showToast('Status: '+s,'success');
+  if(s==='Cancelled'&&prev!=='Cancelled')sendEmail(o,'cancel');
+  if(s==='Complete'&&prev!=='Complete')sendEmail(o,'complete');
+  if(s==='Accepted'&&prev!=='Accepted')sendEmail(o,'accepted');
+}
+
+function doDelOrd(el){
+  deleteOrder(el.getAttribute('data-id'));
+}
+function deleteOrder(el){
+  var id=typeof el==='string'?el:el.getAttribute('data-id');
+  if(!confirm('Delete this order?'))return;
+  orders=orders.filter(function(x){return x.id!==id;});
+  saveOrd();sheetsDel(id);renderOrders();renderStats();showToast('Deleted');
+}
+function setFilter(f,btn){
+  adminFilter=f;
+  document.querySelectorAll('.fpill').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');renderOrders();
+}
+function renderOrders(){
+  var s=(val('adminSearch')||'').toLowerCase();
+  var f=orders.filter(function(o){
+    return (adminFilter==='all'||o.status===adminFilter)&&
+      (!s||[o.from,o.to,o.occasion,o.phone,o.id].join(' ').toLowerCase().indexOf(s)>-1);
+  });
+  var b=document.getElementById('ordersBody');if(!b)return;
+  if(!f.length){b.innerHTML='<tr><td colspan="10"><div class="etbl">No orders found</div></td></tr>';return;}
+  var h='';
+  f.forEach(function(o,i){
+    var st=(o.status||'waiting').toLowerCase();
+    var contact=o.contact||o.phone||'--';
+    var ac='';
+    if(o.status==='Waiting'){
+      ac+='<button class="abs a-acc" data-id="'+o.id+'" data-s="Accepted" onclick="doUpd(this)">Accept</button> ';
+      ac+='<button class="abs a-can" data-id="'+o.id+'" data-s="Cancelled" onclick="doUpd(this)">Reject</button>';
+    }
+    if(o.status==='Accepted')ac+='<button class="abs a-work" data-id="'+o.id+'" data-s="Working" onclick="doUpd(this)">Start Work</button>';
+    if(o.status==='Working')ac+='<button class="abs a-done" data-id="'+o.id+'" data-s="Complete" onclick="doUpd(this)">Complete</button>';
+    if(o.status!=='Cancelled'&&o.status!=='Waiting')ac+=' <button class="abs a-can" data-id="'+o.id+'" data-s="Cancelled" onclick="doUpd(this)">Cancel</button>';
+h+='<tr>' +
+      '<td style="color:var(--text3)">'+(i+1)+'</td>' +
+      '<td style="color:var(--text3);white-space:nowrap;font-size:.7rem">'+((o.date||'').split(',')[0]||'--')+'</td>' +
+      '<td style="font-weight:600">'+(o.from||'--')+'</td>' +
+      '<td>'+(o.to||'--')+'</td>' +
+      '<td style="font-size:.7rem;color:var(--text2)">'+contact+'</td>' +
+      '<td>'+(o.occasion||'--')+'</td>' +
+      '<td style="font-size:.7rem;color:var(--text2)">'+(o.template||o.style||'--')+'</td>' +
+      '<td style="font-weight:600">Rs.'+(o.amount||0)+'</td>' +
+      '<td><span class="spl '+st+'">'+(o.status||'Waiting')+'</span></td>' +
+      '<td><div style="display:flex;gap:3px;flex-wrap:wrap">' +
+        '<button class="abs a-ig" data-contact="'+contact+'" onclick="igOpen(this)">IG</button>' +
+        ac+
+        ' <button class="abs a-del" data-id="'+o.id+'" onclick="doDelOrd(this)">Del</button>' +
+      '</div></td>' +
+    '</tr>';
+  });
+  b.innerHTML=h;
+}
+function renderStats(){
+  var tot=orders.length;
+  var wait=orders.filter(function(o){return o.status==='Waiting';}).length;
+  var prog=orders.filter(function(o){return o.status==='Accepted'||o.status==='Working';}).length;
+  var com=orders.filter(function(o){return o.status==='Complete';}).length;
+  var can=orders.filter(function(o){return o.status==='Cancelled';}).length;
+  var rev=orders.filter(function(o){return o.status==='Complete';}).reduce(function(s,o){return s+(o.amount||0);},0);
+  document.getElementById('adminStats').innerHTML=
+    '<div class="ast"><span class="ast-l">Total</span><span class="ast-v" style="color:var(--rose)">'+tot+'</span></div>' +
+    '<div class="ast"><span class="ast-l">Waiting</span><span class="ast-v" style="color:#d97706">'+wait+'</span></div>' +
+    '<div class="ast"><span class="ast-l">In Progress</span><span class="ast-v" style="color:#7c3aed">'+prog+'</span></div>' +
+    '<div class="ast"><span class="ast-l">Complete</span><span class="ast-v" style="color:#16a34a">'+com+'</span></div>' +
+    '<div class="ast"><span class="ast-l">Cancelled</span><span class="ast-v" style="color:#dc2626">'+can+'</span></div>' +
+    '<div class="ast"><span class="ast-l">Revenue</span><span class="ast-v" style="color:var(--purple)">Rs.'+rev+'</span></div>';
+}
+function igOpen(el){
+  var c=typeof el==='string'?el:el.getAttribute('data-contact');window.open(c.indexOf('@')>-1?'https://instagram.com/'+c.replace('@',''):'https://instagram.com/dilcode_qr','_blank');}
+
+/* CATEGORY CRUD */
+function addCategory(){
+  var name=val('cat_name');if(!name){showToast('Enter name','error');return;}
+  var key=name.toLowerCase().replace(/\s+/g,'_').replace(/[^a-z0-9_]/g,'')+'_'+Date.now();
+  occasions.push({key:key,name:name,bg:val('cat_bg')||'bg-rose',desc:val('cat_desc')||name+' - a special moment.',templates:[]});
+  saveOcc();buildOccGrid();
+  ['cat_name','cat_desc'].forEach(function(id){document.getElementById(id).value='';});
+  renderCats();showToast('Category added!','success');
+}
+function delCat(el){
+  var key=typeof el==='string'?el:el.getAttribute('data-key');
+  var o=findOcc(key);if(!confirm('Delete "'+((o&&o.name)||key)+'" and all its templates?'))return;
+  occasions=occasions.filter(function(x){return x.key!==key;});
+  saveOcc();buildOccGrid();renderCats();showToast('Deleted');
+}
+
+function doRenCat(el){renCat(el.getAttribute('data-key'));}
+function doDelCat(el){delCat(el.getAttribute('data-key'));}
+function doAddTmpl(el){addTmpl(el.getAttribute('data-key'));}
+function renCat(el){
+  var key=typeof el==='string'?el:el.getAttribute('data-key');
+  var o=findOcc(key);var n=prompt('New name:',o?o.name:'');if(!n||!n.trim())return;
+  o.name=n.trim();saveOcc();buildOccGrid();renderCats();showToast('Renamed','success');
+}
+function addTmpl(el){
+  var key=typeof el==='string'?el:el.getAttribute('data-key');
+  var name=(document.getElementById('atn_'+key)||{}).value;name=name?(name+'').trim():'';
+  if(!name){showToast('Enter template name','error');return;}
+  var occ=findOcc(key);if(!occ)return;
+  var price=parseInt(((document.getElementById('atp_'+key)||{}).value)||'99')||99;
+  var style=((document.getElementById('ats_'+key)||{}).value)||'Animated';
+  var desc=((document.getElementById('atd_'+key)||{}).value)||name+' style template';
+  var file=((document.getElementById('atf_'+key)||{}).value||'').trim();
+  occ.templates.push({id:key+'_'+Date.now(),name:name,style:style,price:price,desc:desc,file:file});
+  saveOcc();buildOccGrid();renderCats();showToast('Template added!','success');
+}
+function delTmpl(el,tid){
+  var key=typeof el==='string'?el:el.getAttribute('data-key');
+  if(!tid&&el.getAttribute)tid=el.getAttribute('data-tid');
+  if(!confirm('Delete this template?'))return;
+  var occ=findOcc(key);if(!occ)return;
+  occ.templates=occ.templates.filter(function(t){return t.id!==tid;});
+  saveOcc();buildOccGrid();renderCats();showToast('Deleted');
+}
+
+function doEditTmpl(el){editTmpl(el.getAttribute('data-key'),el.getAttribute('data-tid'));}
+function doDelTmpl(el){delTmpl(el.getAttribute('data-key'),el.getAttribute('data-tid'));}
+function editTmpl(el,tid){
+  var key=typeof el==='string'?el:el.getAttribute('data-key');
+  if(!tid&&el.getAttribute)tid=el.getAttribute('data-tid');
+  var occ=findOcc(key);var t=occ?occ.templates.find(function(x){return x.id===tid;}):null;if(!t)return;
+  var p=prompt('Price (Rs.):',t.price);if(p!==null){var n=parseInt(p);if(!isNaN(n)&&n>0)t.price=n;}
+  var f=prompt('File/URL (blank to remove):',t.file||'');if(f!==null)t.file=f.trim();
+  var d=prompt('Description:',t.desc);if(d!==null&&d.trim())t.desc=d.trim();
+  saveOcc();buildOccGrid();renderCats();showToast('Updated!','success');
+}
+function buildTmplRows(occ){
+  if(!occ.templates.length)return '<div style="padding:12px 16px;font-size:.76rem;color:var(--text3)">No templates yet. Add one below.</div>';
+  var h='<div class="tr-hdr"><div>Name</div><div>Style</div><div>Price</div><div>File</div><div>Actions</div></div>';
+  occ.templates.forEach(function(t){
+    var fh=t.file?'<a href="'+t.file+'" target="_blank" style="color:var(--purple)">'+t.file+'</a>':'<span style="color:var(--text3)">No file</span>';
+    h+='<div class="tr-item">' +
+      '<span class="ti-n">'+t.name+'</span>' +
+      '<span class="ti-s">'+t.style+'</span>' +
+      '<span class="ti-p">Rs.'+t.price+'</span>' +
+      '<span class="ti-f">'+fh+'</span>' +
+      '<div class="ti-acts">' +
+        '<button class="abs a-edit" data-key="'+occ.key+'" data-tid="'+t.id+'" onclick="doEditTmpl(this)">Edit</button>' +
+        '<button class="abs a-del" data-key="'+occ.key+'" data-tid="'+t.id+'" onclick="doDelTmpl(this)">Del</button>' +
+      '</div>' +
+    '</div>';
+  });
+  return h;
+}
+function renderCats(){
+  var el=document.getElementById('catList');if(!el)return;
+  if(!occasions.length){el.innerHTML='<div style="text-align:center;padding:36px;color:var(--text3)">No categories yet.</div>';return;}
+  var h='';
+  occasions.forEach(function(occ){
+    h+='<div class="cat-block">' +
+      '<div class="cat-hdr">' +
+        '<div class="cat-title">' +
+          '<div style="width:8px;height:8px;border-radius:50%;background:var(--rose);flex-shrink:0"></div>' +
+          occ.name+'<span class="cat-cnt">'+occ.templates.length+' templates</span>' +
+        '</div>' +
+        '<div class="cat-acts">' +
+          '<button class="abs a-edit" data-key="'+occ.key+'" onclick="doRenCat(this)">Rename</button>' +
+          '<button class="abs a-del" data-key="'+occ.key+'" onclick="doDelCat(this)">Delete</button>' +
+        '</div>' +
+      '</div>' +
+      buildTmplRows(occ)+
+      '<div class="add-tf">' +
+        '<div style="font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:8px">Add New Template</div>' +
+        '<div class="atf-grid">' +
+          '<div><div style="font-size:.6rem;color:var(--text3);margin-bottom:2px">Name</div><input class="fi" id="atn_'+occ.key+'" placeholder="Template name..."></div>' +
+          '<div><div style="font-size:.6rem;color:var(--text3);margin-bottom:2px">Style</div><select class="fi" id="ats_'+occ.key+'"><option>Animated</option><option>Photo</option><option>Cinematic</option><option>Minimal</option></select></div>' +
+          '<div><div style="font-size:.6rem;color:var(--text3);margin-bottom:2px">Price</div><input class="fi" id="atp_'+occ.key+'" type="number" value="99"></div>' +
+          '<div><div style="font-size:.6rem;color:var(--text3);margin-bottom:2px">File/URL</div><input class="fi" id="atf_'+occ.key+'" placeholder="e.g. rose.html"></div>' +
+          '<div><div style="font-size:.6rem;color:var(--text3);margin-bottom:2px">Description</div><input class="fi" id="atd_'+occ.key+'" placeholder="Short description..."></div>' +
+          '<div style="display:flex;align-items:flex-end"><button class="btn btn-rose btn-sm" data-key="'+occ.key+'" onclick="doAddTmpl(this)">Add</button></div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  });
+  el.innerHTML=h;
+}
+
+/* SHOWCASE ADMIN */
+function addScItem(){
+  var occ=val('sc_occ');if(!occ){showToast('Enter occasion','error');return;}
+  showcase.push({id:'sc_'+Date.now(),occ:occ,style:val('sc_style'),bg:val('sc_bg'),link:val('sc_link')});
+  saveSc();['sc_occ','sc_link'].forEach(function(id){document.getElementById(id).value='';});
+  renderScAdm();buildShowcase();showToast('Added','success');
+}
+
+function doDelSc(el){delSc(el.getAttribute('data-id'));}
+function delSc(el){
+  var id=typeof el==='string'?el:el.getAttribute('data-id');
+  showcase=showcase.filter(function(x){return x.id!==id;});
+  saveSc();renderScAdm();buildShowcase();showToast('Removed');
+}
+function renderScAdm(){
+  var el=document.getElementById('scAdmList');if(!el)return;
+  var cnt=document.getElementById('scCount');if(cnt)cnt.textContent=showcase.length+' items';
+  if(!showcase.length){el.innerHTML='<p style="color:var(--text3);font-size:.78rem">No items yet.</p>';return;}
+  var h='<div class="sc-adm-grid">';
+  showcase.forEach(function(s){
+    h+='<div class="sc-adm-item">' +
+      '<div class="sc-adm-thumb '+s.bg+'"><span style="color:rgba(255,255,255,.8);font-family:var(--fd);font-size:.86rem;font-style:italic">'+s.occ+'</span></div>' +
+      '<div class="sc-adm-foot">' +
+        '<div><div style="font-size:.76rem;font-weight:600;color:var(--text)">'+s.occ+'</div><div style="font-size:.66rem;color:var(--text3)">'+s.style+'</div></div>' +
+        '<button class="abs a-del" data-id="'+s.id+'" onclick="doDelSc(this)">Del</button>' +
+      '</div>' +
+    '</div>';
+  });
+  el.innerHTML=h+'</div>';
+}
+
+/* SECRET ADMIN */
+var tapN=0,tapT=null;
+function secretTap(){tapN++;clearTimeout(tapT);if(tapN>=5){tapN=0;showAdmin();}tapT=setTimeout(function(){tapN=0;},2000);}
+/* kb listener moved to init */
+
+/* INIT */
+function init(){
+  try{if(typeof emailjs!=='undefined')emailjs.init('-sa2lfl8Kf-y4KM5K');}catch(e){}
+  // Modal backdrop close
+  // Keyboard shortcut for admin
+  var kb='';
+  document.addEventListener('keydown',function(e){
+    kb+=e.key;
+    if(kb.indexOf('adminmode')>-1){kb='';showAdmin();}
+    if(kb.length>20)kb=kb.slice(-10);
+  });
+  var mbk=document.getElementById('mbk');
+  if(mbk)mbk.addEventListener('click',function(e){if(e.target===mbk)closeModal();});
+  initTheme();
+  loadData();
+  buildOccGrid();
+  initReveal();
+  if(location.hash==='#admin'){setTimeout(showAdmin,300);}
+  else if(location.hash){
+    var hv=location.hash.replace('#','');
+    if(['home','customization','about','myorders'].indexOf(hv)>-1)goTo(hv);
+  }
+}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',init);
+} else {
+  init();
+}
+</script>
+</body>
+</html>
