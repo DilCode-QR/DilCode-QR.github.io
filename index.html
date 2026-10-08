@@ -356,20 +356,106 @@ a{text-decoration:none;color:inherit}
 
 @media(max-width:1024px){.how-grid{grid-template-columns:1fr 1fr}.price-grid{grid-template-columns:1fr 1fr}.ft-top{grid-template-columns:1fr 1fr}}
 @media(max-width:768px){
-  .sec{padding:56px 0}.nlinks,.ncta{display:none}.hbg{display:flex}
-  .how-grid,.price-grid,.ab-grid{grid-template-columns:1fr}.ft-top{grid-template-columns:1fr}
-  .adm-ff{grid-template-columns:1fr 1fr}.frow,.fcks{grid-template-columns:1fr}
-  .tr-hdr,.tr-item{grid-template-columns:1fr auto}
-  .tr-hdr>*:not(:first-child):not(:last-child){display:none}
-  .tr-item>*:not(:first-child):not(:last-child){display:none}
-  .atf-grid{grid-template-columns:1fr auto}
-  .atf-grid>*:nth-child(n+2):not(:last-child){display:none}
-  .acf-grid{grid-template-columns:1fr auto}
-  .acf-grid>*:nth-child(n+2):not(:last-child){display:none}
+  /* PUBLIC */
+  .sec{padding:48px 0}
+  .nlinks,.ncta{display:none}.hbg{display:flex}
+  .how-grid,.price-grid,.ab-grid{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr}
+  .occ-grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr))}
+  .tmpl-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+  .sc-grid{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+  .frow,.fcks{grid-template-columns:1fr}
   .order-details{grid-template-columns:1fr}
   .tc-acts{flex-direction:column}
+  .tc-acts .btn{flex:none;width:100%}
+  /* ADMIN TABS - wrap on mobile */
+  .adm-tabs{flex-wrap:wrap;max-width:100%;height:auto;padding:4px}
+  .adm-tab{flex:none;font-size:.72rem;padding:6px 10px}
+  .adm-body{padding:14px 12px}
+  .adm-stats{grid-template-columns:repeat(3,1fr)}
+  .adm-ff{grid-template-columns:1fr 1fr}
+  /* ADMIN TABLE */
+  .adm-tbl{font-size:.7rem}
+  .adm-tbl th:nth-child(2),.adm-tbl td:nth-child(2),
+  .adm-tbl th:nth-child(4),.adm-tbl td:nth-child(4),
+  .adm-tbl th:nth-child(7),.adm-tbl td:nth-child(7),
+  .adm-tbl th:nth-child(8),.adm-tbl td:nth-child(8){display:none}
+  /* TEMPLATE ROWS */
+  .tr-hdr{grid-template-columns:1fr auto}
+  .tr-item{grid-template-columns:1fr auto}
+  .tr-hdr>*:not(:first-child):not(:last-child){display:none}
+  .tr-item>*:not(:first-child):not(:last-child){display:none}
+  /* ADD FORMS - stack on mobile */
+  .atf-grid{grid-template-columns:1fr 1fr}
+  .acf-grid{grid-template-columns:1fr 1fr}
+  .offer-form-grid{grid-template-columns:1fr 1fr!important}
+  /* PRICING ADMIN */
+  #pricingAdminList>div{grid-template-columns:1fr 70px 1fr!important}
+  /* FORMS ADMIN */
+  .ff-item{flex-wrap:wrap;gap:4px}
+  /* SHOWCASE ADMIN */
+  .sc-adm-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
 }
-@media(max-width:480px){.con,.con-sm{padding:0 14px}.hero h1{font-size:2.4rem}.adm-lb{padding:26px 14px}.adm-ff{grid-template-columns:1fr}}
+@media(max-width:480px){
+  .con,.con-sm{padding:0 12px}
+  .hero{padding:40px 12px 56px}
+  .hero h1{font-size:2.1rem}
+  .hero-btns{flex-direction:column;align-items:center}
+  .hero-btns .btn{width:100%;max-width:260px}
+  .occ-grid{grid-template-columns:repeat(2,1fr)}
+  .occ-thumb{height:110px}
+  .occ-txt{font-size:1.4rem}
+  .tmpl-grid{grid-template-columns:1fr}
+  .price-grid{grid-template-columns:1fr}
+  .hstats{gap:14px}
+  .hstat-n{font-size:1.4rem}
+  .sec-title{font-size:1.5rem}
+  .how-step{padding:14px 12px}
+  .mbdy{padding:12px 14px 20px}
+  .order-card{padding:12px}
+  .order-actions{flex-direction:column}
+  .order-actions .btn{width:100%}
+  .ft-bot{flex-direction:column;gap:6px;text-align:center}
+  /* ADMIN MOBILE */
+  .adm-lb{padding:24px 14px}
+  .adm-nav{padding:0 12px;height:50px}
+  .adm-logo{font-size:.9rem}
+  .adm-nav .btn{font-size:.68rem;padding:5px 9px}
+  .adm-body{padding:10px 10px}
+  .adm-stats{grid-template-columns:repeat(2,1fr)}
+  .adm-tabs{gap:2px}
+  .adm-tab{font-size:.64rem;padding:5px 7px}
+  .adm-ff{grid-template-columns:1fr}
+  .adm-card .adm-ch{flex-direction:column;align-items:flex-start;gap:6px}
+  /* ADMIN TABLE MOBILE - show minimal */
+  .adm-tbl th:nth-child(3),.adm-tbl td:nth-child(3){font-size:.7rem}
+  .adm-tbl th:nth-child(5),.adm-tbl td:nth-child(5),
+  .adm-tbl th:nth-child(6),.adm-tbl td:nth-child(6){display:none}
+  /* TEMPLATE ROWS MOBILE */
+  .tr-hdr,.tr-item{grid-template-columns:1fr auto!important}
+  /* ADD TEMPLATE FORM MOBILE - full stack */
+  .atf-grid{grid-template-columns:1fr!important}
+  .acf-grid{grid-template-columns:1fr!important}
+  .offer-form-grid{grid-template-columns:1fr!important}
+  /* PRICING ADMIN MOBILE */
+  #pricingAdminList>div{grid-template-columns:1fr 60px!important}
+  #pricingAdminList>div>input:nth-child(3){display:none}
+  /* SHOWCASE ADMIN */
+  .sc-adm-grid{grid-template-columns:repeat(2,1fr)}
+  /* OFFER BANNER */
+  .offer-banner-inner{gap:5px}
+  .offer-pct{font-size:.88rem}
+  .offer-tag{font-size:.6rem;padding:2px 7px}
+  .offer-till{display:none!important}
+  /* FORMS ADMIN */
+  .ff-block{font-size:.76rem}
+  .ff-item{flex-direction:column;align-items:flex-start;padding:8px 0}
+  /* SHOWCASE GRID */
+  .sc-grid{grid-template-columns:repeat(2,1fr)}
+  .sc-card .sc-acts{flex-direction:column}
+  /* CUST HERO */
+  .cust-hero{padding:36px 0}
+}
 
 /* CONTENT PROTECTION */
 body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
@@ -812,7 +898,7 @@ img{pointer-events:none;-webkit-user-drag:none}
 <div class="toast" id="toast"></div>
 <script>
 /* CONFIG */
-var SHEETS='https://script.google.com/macros/s/AKfycbzgvWXhtRD6-9cM1LAuH_Jijw119BdCuiyKsKmexkO_-74HdexYdkkWCOVbANc7Unwd/exec';
+var SHEETS='https://script.google.com/macros/s/AKfycbyTau8ShEjLf7sgT1sS3ewc2nxulHC5qBg-tIK1_HElAOg6IjgE51jg8ESYq2TJ-rXf/exec';
 var PASS='dilcode2024';
 var ESVC='service_2bhtq9k',ETPL='template_dfulpxl',EMAIL='gmas2609@gmail.com';
 
@@ -896,8 +982,8 @@ function loadData(){
   var r=localStorage.getItem('dc_ord');
   orders=r?JSON.parse(r):[];
 }
-function saveOcc(){localStorage.setItem('dc_occ',JSON.stringify(occasions));}
-function saveSc(){localStorage.setItem('dc_sc',JSON.stringify(showcase));}
+function saveOcc(){localStorage.setItem('dc_occ',JSON.stringify(occasions));pushConfigToSheets();}
+function saveSc(){localStorage.setItem('dc_sc',JSON.stringify(showcase));pushConfigToSheets();}
 function saveOrd(){localStorage.setItem('dc_ord',JSON.stringify(orders));}
 
 /* THEME */
@@ -974,7 +1060,7 @@ function buildOccGrid(){
         '<h3>'+o.name+'</h3>' +
         '<p>'+o.desc+'</p>' +
         '<div class="occ-foot">' +
-          (currentOffer&&currentOffer.pct?'<span class="occ-price"><span class="orig-price">Rs.79</span><span class="offer-price">Rs.'+Math.round(79*(1-currentOffer.pct/100))+'</span></span>':'<span class="occ-price"></span>')+
+          (currentOffer&&currentOffer.pct?'<span class="occ-price"><span class="orig-price"></span><span class="offer-price"></span></span>':'<span class="occ-price"></span>')+
           '<div class="occ-arr">&#8599;</div>' +
         '</div>' +
       '</div>';
@@ -1660,6 +1746,7 @@ function loadStyles(){
 }
 function saveStyles(styles){
   localStorage.setItem('dc_styles', JSON.stringify(styles));
+  pushConfigToSheets();
 }
 function getStyles(){ return loadStyles(); }
 
@@ -1821,6 +1908,7 @@ function saveOffer(){
   localStorage.setItem('dc_offer', JSON.stringify(offer));
   currentOffer = offer;
   showOfferBanner(offer);
+  pushConfigToSheets();
   updateOfferStatus();
   buildOccGrid();
   showToast('Offer activated! ' + pct + '% off', 'success');
@@ -1830,6 +1918,7 @@ function clearOffer(){
   localStorage.removeItem('dc_offer');
   currentOffer = null;
   hideOfferBanner();
+  pushConfigToSheets();
   updateOfferStatus();
   buildOccGrid();
   showToast('Offer removed', 'success');
@@ -1872,7 +1961,7 @@ function loadFormFields(){
   var s = localStorage.getItem('dc_form_fields');
   return s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEF_FORM_FIELDS));
 }
-function saveFormFields(fields){ localStorage.setItem('dc_form_fields', JSON.stringify(fields)); }
+function saveFormFields(fields){ localStorage.setItem('dc_form_fields', JSON.stringify(fields)); pushConfigToSheets(); }
 
 function addFormField(){
   var occ = val('ff_occ');
@@ -1946,7 +2035,7 @@ function loadPricing(){
   var s = localStorage.getItem('dc_pricing');
   return s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEF_PRICING));
 }
-function savePricing(p){ localStorage.setItem('dc_pricing', JSON.stringify(p)); }
+function savePricing(p){ localStorage.setItem('dc_pricing', JSON.stringify(p)); pushConfigToSheets(); }
 
 function buildPricingSection(){
   var el = document.getElementById('pricingGrid');
@@ -2027,6 +2116,39 @@ function addPricing(){
   showToast('"'+label+'" added!','success');
 }
 
+
+/* ════════════════════════════════════
+   CROSS-DEVICE CONFIG SYNC
+════════════════════════════════════ */
+function pushConfigToSheets(){
+  var cfg = {
+    action:'saveConfig',
+    occasions: JSON.stringify(occasions),
+    showcase: JSON.stringify(showcase),
+    styles: JSON.stringify(loadStyles()),
+    pricing: JSON.stringify(loadPricing()),
+    formFields: JSON.stringify(loadFormFields()),
+    offer: localStorage.getItem('dc_offer')||''
+  };
+  fetch(SHEETS,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg)}).catch(function(){});
+}
+
+function pullConfigFromSheets(cb){
+  fetch(SHEETS+'?action=getConfig')
+    .then(function(r){return r.json();})
+    .then(function(data){
+      if(!data||data.error){if(cb)cb();return;}
+      if(data.occasions){try{occasions=JSON.parse(data.occasions);saveOcc();}catch(e){}}
+      if(data.showcase){try{showcase=JSON.parse(data.showcase);saveSc();}catch(e){}}
+      if(data.styles){try{saveStyles(JSON.parse(data.styles));}catch(e){}}
+      if(data.pricing){try{savePricing(JSON.parse(data.pricing));}catch(e){}}
+      if(data.formFields){try{saveFormFields(JSON.parse(data.formFields));}catch(e){}}
+      if(data.offer){try{localStorage.setItem('dc_offer',data.offer);}catch(e){}}
+      if(cb)cb();
+    })
+    .catch(function(){if(cb)cb();});
+}
+
 /* INIT */
 function init(){
   try{if(typeof emailjs!=='undefined')emailjs.init('-sa2lfl8Kf-y4KM5K');}catch(e){}
@@ -2042,9 +2164,13 @@ function init(){
   if(mbk)mbk.addEventListener('click',function(e){if(e.target===mbk)closeModal();});
   initTheme();
   loadData();
-  loadOffer();
-  updateAllStyleDropdowns();
-  buildOccGrid();
+  // Pull latest config from Sheets for cross-device sync
+  pullConfigFromSheets(function(){
+    loadOffer();
+    updateAllStyleDropdowns();
+    buildOccGrid();
+    buildPricingSection();
+  });
   buildPricingSection();
   initReveal();
   if(location.hash==='#admin'){setTimeout(showAdmin,300);}
