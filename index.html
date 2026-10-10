@@ -812,7 +812,7 @@ img{pointer-events:none;-webkit-user-drag:none}
 <div class="toast" id="toast"></div>
 <script>
 /* CONFIG */
-var SHEETS='https://script.google.com/macros/s/AKfycbwAvB8hKuPZ0UNxlFdiS7MYC13fU_DVpmNIp1-n802JyMJIbTpCKafFJGyAZZ45-Is/exec';
+var SHEETS='https://script.google.com/macros/s/AKfycbzrdMtB6CJkTsIfGhHeUp-qXCiDn-DV24OSmpjvhldgxILp3uv5o162IQNyPMHLTtcl/exec';
 var PASS='dilcode2024';
 var ESVC='service_2bhtq9k',ETPL='template_dfulpxl',EMAIL='gmas2609@gmail.com';
 
@@ -974,7 +974,7 @@ function buildOccGrid(){
         '<h3>'+o.name+'</h3>' +
         '<p>'+o.desc+'</p>' +
         '<div class="occ-foot">' +
-          (currentOffer&&currentOffer.pct?'<span class="occ-price"><span class="orig-price"></span><span class="offer-price"></span></span>':'<span class="occ-price"></span>')+
+          (currentOffer&&currentOffer.pct?'<span class="occ-price"><span class="orig-price">Rs.79</span><span class="offer-price">Rs.'+Math.round(79*(1-currentOffer.pct/100))+'</span></span>':'<span class="occ-price">from Rs. 79</span>')+
           '<div class="occ-arr">&#8599;</div>' +
         '</div>' +
       '</div>';
